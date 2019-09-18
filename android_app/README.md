@@ -10,7 +10,7 @@ List of all the devices with DNS-SD `__webthing.tcp`
 ![Devices list](/imgs/app1.jpg)
 
 Clicking the device, asks for provisioning
-![Provisioning of device](/imgs/app2.jpg =250x250)
+![Provisioning of device](/imgs/app2.jpg)
 
 ***
 ## License
