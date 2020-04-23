@@ -2,7 +2,7 @@
     "@context": ["http://www.w3.org/ns/td", 
                 {"iot": "http://iotschema.org/"}],
     "@type" : "beacon",
-    "id": "urn:dev:wot:com:sofie:gp:iotbeacon",
+    "id": "urn:dev:wot:com:sofie:gp",
     "name": "raspberry pi",
     "description" : "This is a RSP with services",
     "support" : "ROVIO",
@@ -17,23 +17,21 @@
                 "http:methodName": "GET"
             }]
         },
-        "iBeacon" : {           
+        "eddystone" : {           
             "writable": true,
             "observable": false,
             "type": "object",
             "properties": {
-                "UUID": {
-                    "type": "string"
+                "NAMESPACE": {
+                    "type": "string",
+		    "const": "784DAFB85D277AAFE5D7"
                 },
-                "major": {
-                    "type":  "number"
-                },
-                "minor": {
+                "instanceID": {
                     "type":  "number"
                 }
             },
             "forms": [{
-                "href": "https://sofie.example.com/gp/iBeacon",
+                "href": "https://sofie.example.com/gp/eddystone",
                 "http:methodName": "POST",
                 "contentType": "application/json"
             }]

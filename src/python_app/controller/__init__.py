@@ -7,11 +7,11 @@ from werkzeug.routing import BaseConverter, ValidationError
 from itsdangerous import base64_encode, base64_decode
 from bson.objectid import ObjectId
 
-from model import DB
+from python_app.model import DB
 
 app = Flask(__name__)
-#app.decimal_encoder = DecimalEncoder
-#app.url_map.converters['ObjectId'] = ObjectIDConverter
+# app.decimal_encoder = DecimalEncoder
+# app.url_map.converters['ObjectId'] = ObjectIDConverter
 
 CORS(app)
 
@@ -25,6 +25,7 @@ def create_error_response(status_code, code=0, message=None):
 def bad_request_response(message=None):
     return create_error_response(400, message=message)
 
+
 @app.errorhandler(404)
 def resource_not_found(error):
     return create_error_response(404, message="This resource url does not exist")
@@ -32,17 +33,19 @@ def resource_not_found(error):
 
 @app.errorhandler(400)
 def resource_not_found(error):
-    return create_error_response(400, message='Invalid or missing parameters')
+    return create_error_response(400, message="Invalid or missing parameters")
 
 
 @app.errorhandler(500)
 def unknown_error(error):
-    return create_error_response(500, message="The system has failed. Please, contact the administrator")
+    return create_error_response(
+        500, message="The system has failed. Please, contact the administrator"
+    )
 
-@app.route('/')
+
+@app.route("/")
 def hello_world():
     return jsonify({"message": "Hello World!"})
 
-import controller.beacon_controller 
-#import controllers.hunt_controller
-#import controllers.player_controller
+
+import python_app.controller.beacon_controller
