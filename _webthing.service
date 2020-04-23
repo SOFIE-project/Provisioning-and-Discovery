@@ -1,7 +1,7 @@
 <?xml version="1.0" standalone='no'?><!--*-nxml-*-->
 <!DOCTYPE service-group SYSTEM "avahi-service.dtd">
 <service-group>
-<name replace-wildcards="yes">"test"</name>
+<name replace-wildcards="yes">"DP"</name>
 <service>
 <type>_webthing._tcp</type>
 <port>5343</port>
