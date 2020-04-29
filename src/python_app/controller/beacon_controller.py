@@ -96,9 +96,9 @@ def beacon_switch():
         )
         command = init + " " + add_space(namespace, 2) + " " + add_space(instanceID,2)
         interface = subprocess.Popen(
-            ["sudo hciconfig -a hci0 leadv 3"], stdout=subprocess.PIPE, shell=True
+            ["sudo hciconfig -a hci0 leadv 3"], stdout=subprocess.PIPE, shell=False
         )
-        interface = subprocess.Popen([command], stdout=subprocess.PIPE, shell=True)
+        interface = subprocess.Popen([command], stdout=subprocess.PIPE, shell=False)
         (int, err) = interface.communicate()
         return jsonify({"code": 200, "message": "Success", "data": int})
     else:
