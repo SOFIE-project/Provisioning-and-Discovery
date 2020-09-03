@@ -1,0 +1,517 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
+<meta name="generator" content="pdoc 0.9.1" />
+<title>advertisement API documentation</title>
+<meta name="description" content="BLE Advertising Description …" />
+<link rel="preload stylesheet" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/11.0.1/sanitize.min.css" integrity="sha256-PK9q560IAAa6WVRRh76LtCaI8pjTJ2z11v0miyNNjrs=" crossorigin>
+<link rel="preload stylesheet" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/11.0.1/typography.min.css" integrity="sha256-7l/o7C8jubJiy74VsKTidCy1yBkRtiUGbVkYBylBqUg=" crossorigin>
+<link rel="stylesheet preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/styles/github.min.css" crossorigin>
+<style>:root{--highlight-color:#fe9}.flex{display:flex !important}body{line-height:1.5em}#content{padding:20px}#sidebar{padding:30px;overflow:hidden}#sidebar > *:last-child{margin-bottom:2cm}.http-server-breadcrumbs{font-size:130%;margin:0 0 15px 0}#footer{font-size:.75em;padding:5px 30px;border-top:1px solid #ddd;text-align:right}#footer p{margin:0 0 0 1em;display:inline-block}#footer p:last-child{margin-right:30px}h1,h2,h3,h4,h5{font-weight:300}h1{font-size:2.5em;line-height:1.1em}h2{font-size:1.75em;margin:1em 0 .50em 0}h3{font-size:1.4em;margin:25px 0 10px 0}h4{margin:0;font-size:105%}h1:target,h2:target,h3:target,h4:target,h5:target,h6:target{background:var(--highlight-color);padding:.2em 0}a{color:#058;text-decoration:none;transition:color .3s ease-in-out}a:hover{color:#e82}.title code{font-weight:bold}h2[id^="header-"]{margin-top:2em}.ident{color:#900}pre code{background:#f8f8f8;font-size:.8em;line-height:1.4em}code{background:#f2f2f1;padding:1px 4px;overflow-wrap:break-word}h1 code{background:transparent}pre{background:#f8f8f8;border:0;border-top:1px solid #ccc;border-bottom:1px solid #ccc;margin:1em 0;padding:1ex}#http-server-module-list{display:flex;flex-flow:column}#http-server-module-list div{display:flex}#http-server-module-list dt{min-width:10%}#http-server-module-list p{margin-top:0}.toc ul,#index{list-style-type:none;margin:0;padding:0}#index code{background:transparent}#index h3{border-bottom:1px solid #ddd}#index ul{padding:0}#index h4{margin-top:.6em;font-weight:bold}@media (min-width:200ex){#index .two-column{column-count:2}}@media (min-width:300ex){#index .two-column{column-count:3}}dl{margin-bottom:2em}dl dl:last-child{margin-bottom:4em}dd{margin:0 0 1em 3em}#header-classes + dl > dd{margin-bottom:3em}dd dd{margin-left:2em}dd p{margin:10px 0}.name{background:#eee;font-weight:bold;font-size:.85em;padding:5px 10px;display:inline-block;min-width:40%}.name:hover{background:#e0e0e0}dt:target .name{background:var(--highlight-color)}.name > span:first-child{white-space:nowrap}.name.class > span:nth-child(2){margin-left:.4em}.inherited{color:#999;border-left:5px solid #eee;padding-left:1em}.inheritance em{font-style:normal;font-weight:bold}.desc h2{font-weight:400;font-size:1.25em}.desc h3{font-size:1em}.desc dt code{background:inherit}.source summary,.git-link-div{color:#666;text-align:right;font-weight:400;font-size:.8em;text-transform:uppercase}.source summary > *{white-space:nowrap;cursor:pointer}.git-link{color:inherit;margin-left:1em}.source pre{max-height:500px;overflow:auto;margin:0}.source pre code{font-size:12px;overflow:visible}.hlist{list-style:none}.hlist li{display:inline}.hlist li:after{content:',\2002'}.hlist li:last-child:after{content:none}.hlist .hlist{display:inline;padding-left:1em}img{max-width:100%}td{padding:0 .5em}.admonition{padding:.1em .5em;margin-bottom:1em}.admonition-title{font-weight:bold}.admonition.note,.admonition.info,.admonition.important{background:#aef}.admonition.todo,.admonition.versionadded,.admonition.tip,.admonition.hint{background:#dfd}.admonition.warning,.admonition.versionchanged,.admonition.deprecated{background:#fd4}.admonition.error,.admonition.danger,.admonition.caution{background:lightpink}</style>
+<style media="screen and (min-width: 700px)">@media screen and (min-width:700px){#sidebar{width:30%;height:100vh;overflow:auto;position:sticky;top:0}#content{width:70%;max-width:100ch;padding:3em 4em;border-left:1px solid #ddd}pre code{font-size:1em}.item .name{font-size:1em}main{display:flex;flex-direction:row-reverse;justify-content:flex-end}.toc ul ul,#index ul{padding-left:1.5em}.toc > ul > li{margin-top:.5em}}</style>
+<style media="print">@media print{#sidebar h1{page-break-before:always}.source{display:none}}@media print{*{background:transparent !important;color:#000 !important;box-shadow:none !important;text-shadow:none !important}a[href]:after{content:" (" attr(href) ")";font-size:90%}a[href][title]:after{content:none}abbr[title]:after{content:" (" attr(title) ")"}.ir a:after,a[href^="javascript:"]:after,a[href^="#"]:after{content:""}pre,blockquote{border:1px solid #999;page-break-inside:avoid}thead{display:table-header-group}tr,img{page-break-inside:avoid}img{max-width:100% !important}@page{margin:0.5cm}p,h2,h3{orphans:3;widows:3}h1,h2,h3,h4,h5,h6{page-break-after:avoid}}</style>
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/highlight.min.js" integrity="sha256-Uv3H6lx7dJmRfRvH8TH6kJD1TSK1aFcwgx+mdg3epi8=" crossorigin></script>
+<script>window.addEventListener('DOMContentLoaded', () => hljs.initHighlighting())</script>
+</head>
+<body>
+<main>
+<article id="content">
+<header>
+<h1 class="title">Module <code>advertisement</code></h1>
+</header>
+<section id="section-intro">
+<p>BLE Advertising Description</p>
+<p>Advertising packets are structured data which is broadcast on the BLE Advertising
+channels and available for all devices in range.
+Because of the limited space
+available in BLE Advertising packets (32 bytes), each packet's contents must be
+carefully controlled.</p>
+<p>It constructs the correct Advertisement Data from the structured
+data and configured the kernel to send the correct advertisement.</p>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">&#34;&#34;&#34;
+BLE Advertising Description
+
+Advertising packets are structured data which is broadcast on the BLE Advertising
+channels and available for all devices in range.  Because of the limited space
+available in BLE Advertising packets (32 bytes), each packet&#39;s contents must be
+carefully controlled.
+
+It constructs the correct Advertisement Data from the structured
+data and configured the kernel to send the correct advertisement.
+
+&#34;&#34;&#34;
+
+
+from __future__ import print_function
+import dbus
+import dbus.exceptions
+import dbus.mainloop.glib
+import dbus.service
+import binascii
+import array
+
+try:
+    from gi.repository import GObject  # python3
+except ImportError:
+    import gobject as GObject  # python2
+
+from random import randint
+
+mainloop = None
+
+LE_ADVERTISING_MANAGER_IFACE = &#34;org.bluez.LEAdvertisingManager1&#34;
+DBUS_OM_IFACE = &#34;org.freedesktop.DBus.ObjectManager&#34;
+DBUS_PROP_IFACE = &#34;org.freedesktop.DBus.Properties&#34;
+LE_ADVERTISEMENT_IFACE = &#34;org.bluez.LEAdvertisement1&#34;
+
+
+class Advertisement(dbus.service.Object):
+    &#34;&#34;&#34; Advertisement Class for BLE device &#34;&#34;&#34;
+
+    PATH_BASE = &#34;/src/advertisement&#34;
+
+    def __init__(self, bus, index, advertising_type):
+        &#34;&#34;&#34;
+        :param string Name: Name of the BLE device to shown when scanning.
+        :param string Type: Determines the type of advertising packet requested. Possible values: &#34;broadcast&#34; or &#34;peripheral&#34;
+        :param array{string} ServiceUUID: List of UUIDs to include in the &#34;Service UUID&#34; field of the Advertising Data.
+        :param dict ManufacturerData: Manufactuer Data fields to include in the Advertising Data.
+        :param dict ServiceData: Service Data elements to include. The keys are the UUID to associate with the data.
+        :param bool IncludeTxPower: Includes the Tx Power in the advertising packet.
+        &#34;&#34;&#34;
+        self.path = self.PATH_BASE + str(index)
+        self.bus = bus
+        self.ad_type = advertising_type
+        self.service_uuids = None
+        self.local_name = None
+        self.include_tx_power = None
+        self.data = None
+        dbus.service.Object.__init__(self, bus, self.path)
+
+    # Get properties of BLE
+    def get_properties(self):
+        &#34;&#34;&#34; This method gets called when the service daemon request for the advertising propertises.&#34;&#34;&#34;
+        properties = dict()
+        properties[&#34;Type&#34;] = self.ad_type
+
+        if self.service_uuids is not None:
+            properties[&#34;ServiceUUIDs&#34;] = dbus.Array(self.service_uuids, signature=&#34;s&#34;)
+        if self.local_name is not None:
+            properties[&#34;LocalName&#34;] = dbus.String(self.local_name)
+        if self.include_tx_power is not None:
+            properties[&#34;IncludeTxPower&#34;] = dbus.Boolean(self.include_tx_power)
+        if self.data is not None:
+            properties[&#34;Data&#34;] = dbus.Dictionary(self.data, signature=&#34;yv&#34;)
+
+        return {LE_ADVERTISEMENT_IFACE: properties}
+
+    def get_path(self):
+        &#34;&#34;&#34; This method gets called to get the path of the interface dbus used for the BLE.&#34;&#34;&#34;
+        return dbus.ObjectPath(self.path)
+
+    # Add Service for BLE device
+    def add_service_uuid(self, uuid):
+        &#34;&#34;&#34; This method gets called to add service uuids to the list that is added in the advertising packet.&#34;&#34;&#34;
+        if not self.service_uuids:
+            self.service_uuids = []
+        self.service_uuids.append(uuid)
+
+    # Add name for BLE device
+    def add_local_name(self, name):
+        &#34;&#34;&#34; This method gets called to add custom name to the BLE device. &#34;&#34;&#34;
+        if not self.local_name:
+            self.local_name = &#34;&#34;
+        self.local_name = dbus.String(name)
+
+    # Add custom data to BLE advertisement
+    def add_data(self, ad_type, data):
+        &#34;&#34;&#34;This method gets called to add custom data to the advertising packet.&#34;&#34;&#34;
+        if not self.data:
+            self.data = dbus.Dictionary({}, signature=&#34;yv&#34;)
+        self.data[ad_type] = dbus.Array(data, signature=&#34;y&#34;)
+
+    @dbus.service.method(DBUS_PROP_IFACE, in_signature=&#34;s&#34;, out_signature=&#34;a{sv}&#34;)
+
+    # Get all properties of the BLE
+    def GetAll(self, interface):
+        &#34;&#34;&#34;This method gets called when the service daemon request for all of the advertising properties.&#34;&#34;&#34;
+        if interface != LE_ADVERTISEMENT_IFACE:
+            raise InvalidArgsException()
+        print(&#34;Returning props&#34;)
+        return self.get_properties()[LE_ADVERTISEMENT_IFACE]
+
+    @dbus.service.method(LE_ADVERTISEMENT_IFACE, in_signature=&#34;&#34;, out_signature=&#34;yo&#34;)
+    def Release(self):
+        &#34;&#34;&#34; This method gets called when the service daemon removes the Advertisement. A client can use it to do cleanup tasks.&#34;&#34;&#34;
+        print(&#34;%s: Released!&#34; % self.path)
+
+    # String to Hexadecimal
+    def string_hex(self, data):
+        &#34;&#34;&#34; This method gets called to convert the string data into hex to be used in the advertising packet. &#34;&#34;&#34;
+        hex_data = binascii.b2a_hex(data.encode())
+        hex_array = bytearray.fromhex(hex_data.decode(&#34;utf-8&#34;))
+        hex_array.insert(0, 0x16)
+        return hex_array
+
+
+# Callback for Success Advertisement
+def advertisement_callback():
+    &#34;&#34;&#34; This method gets called when the an advertisement object is registered succussfully and sent over the BLE Advertising channel. &#34;&#34;&#34;
+    print(&#34;Advertisement registered&#34;)
+
+
+# Callback for Error Advertisement
+def adv_error_callback(error):
+    &#34;&#34;&#34;This method gets called when the an advertisement object is not registered and error message is displayed to the client. &#34;&#34;&#34;
+    print(&#34;Failed to register advertisement: &#34; + str(error))
+    mainloop.quit()</code></pre>
+</details>
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+<h2 class="section-title" id="header-functions">Functions</h2>
+<dl>
+<dt id="advertisement.adv_error_callback"><code class="name flex">
+<span>def <span class="ident">adv_error_callback</span></span>(<span>error)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>This method gets called when the an advertisement object is not registered and error message is displayed to the client.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def adv_error_callback(error):
+    &#34;&#34;&#34;This method gets called when the an advertisement object is not registered and error message is displayed to the client. &#34;&#34;&#34;
+    print(&#34;Failed to register advertisement: &#34; + str(error))
+    mainloop.quit()</code></pre>
+</details>
+</dd>
+<dt id="advertisement.advertisement_callback"><code class="name flex">
+<span>def <span class="ident">advertisement_callback</span></span>(<span>)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>This method gets called when the an advertisement object is registered succussfully and sent over the BLE Advertising channel.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def advertisement_callback():
+    &#34;&#34;&#34; This method gets called when the an advertisement object is registered succussfully and sent over the BLE Advertising channel. &#34;&#34;&#34;
+    print(&#34;Advertisement registered&#34;)</code></pre>
+</details>
+</dd>
+</dl>
+</section>
+<section>
+<h2 class="section-title" id="header-classes">Classes</h2>
+<dl>
+<dt id="advertisement.Advertisement"><code class="flex name class">
+<span>class <span class="ident">Advertisement</span></span>
+<span>(</span><span>bus, index, advertising_type)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Advertisement Class for BLE device </p>
+<p>:param string Name: Name of the BLE device to shown when scanning.
+:param string Type: Determines the type of advertising packet requested. Possible values: "broadcast" or "peripheral"
+:param array{string} ServiceUUID: List of UUIDs to include in the "Service UUID" field of the Advertising Data.
+:param dict ManufacturerData: Manufactuer Data fields to include in the Advertising Data.
+:param dict ServiceData: Service Data elements to include. The keys are the UUID to associate with the data.
+:param bool IncludeTxPower: Includes the Tx Power in the advertising packet.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class Advertisement(dbus.service.Object):
+    &#34;&#34;&#34; Advertisement Class for BLE device &#34;&#34;&#34;
+
+    PATH_BASE = &#34;/src/advertisement&#34;
+
+    def __init__(self, bus, index, advertising_type):
+        &#34;&#34;&#34;
+        :param string Name: Name of the BLE device to shown when scanning.
+        :param string Type: Determines the type of advertising packet requested. Possible values: &#34;broadcast&#34; or &#34;peripheral&#34;
+        :param array{string} ServiceUUID: List of UUIDs to include in the &#34;Service UUID&#34; field of the Advertising Data.
+        :param dict ManufacturerData: Manufactuer Data fields to include in the Advertising Data.
+        :param dict ServiceData: Service Data elements to include. The keys are the UUID to associate with the data.
+        :param bool IncludeTxPower: Includes the Tx Power in the advertising packet.
+        &#34;&#34;&#34;
+        self.path = self.PATH_BASE + str(index)
+        self.bus = bus
+        self.ad_type = advertising_type
+        self.service_uuids = None
+        self.local_name = None
+        self.include_tx_power = None
+        self.data = None
+        dbus.service.Object.__init__(self, bus, self.path)
+
+    # Get properties of BLE
+    def get_properties(self):
+        &#34;&#34;&#34; This method gets called when the service daemon request for the advertising propertises.&#34;&#34;&#34;
+        properties = dict()
+        properties[&#34;Type&#34;] = self.ad_type
+
+        if self.service_uuids is not None:
+            properties[&#34;ServiceUUIDs&#34;] = dbus.Array(self.service_uuids, signature=&#34;s&#34;)
+        if self.local_name is not None:
+            properties[&#34;LocalName&#34;] = dbus.String(self.local_name)
+        if self.include_tx_power is not None:
+            properties[&#34;IncludeTxPower&#34;] = dbus.Boolean(self.include_tx_power)
+        if self.data is not None:
+            properties[&#34;Data&#34;] = dbus.Dictionary(self.data, signature=&#34;yv&#34;)
+
+        return {LE_ADVERTISEMENT_IFACE: properties}
+
+    def get_path(self):
+        &#34;&#34;&#34; This method gets called to get the path of the interface dbus used for the BLE.&#34;&#34;&#34;
+        return dbus.ObjectPath(self.path)
+
+    # Add Service for BLE device
+    def add_service_uuid(self, uuid):
+        &#34;&#34;&#34; This method gets called to add service uuids to the list that is added in the advertising packet.&#34;&#34;&#34;
+        if not self.service_uuids:
+            self.service_uuids = []
+        self.service_uuids.append(uuid)
+
+    # Add name for BLE device
+    def add_local_name(self, name):
+        &#34;&#34;&#34; This method gets called to add custom name to the BLE device. &#34;&#34;&#34;
+        if not self.local_name:
+            self.local_name = &#34;&#34;
+        self.local_name = dbus.String(name)
+
+    # Add custom data to BLE advertisement
+    def add_data(self, ad_type, data):
+        &#34;&#34;&#34;This method gets called to add custom data to the advertising packet.&#34;&#34;&#34;
+        if not self.data:
+            self.data = dbus.Dictionary({}, signature=&#34;yv&#34;)
+        self.data[ad_type] = dbus.Array(data, signature=&#34;y&#34;)
+
+    @dbus.service.method(DBUS_PROP_IFACE, in_signature=&#34;s&#34;, out_signature=&#34;a{sv}&#34;)
+
+    # Get all properties of the BLE
+    def GetAll(self, interface):
+        &#34;&#34;&#34;This method gets called when the service daemon request for all of the advertising properties.&#34;&#34;&#34;
+        if interface != LE_ADVERTISEMENT_IFACE:
+            raise InvalidArgsException()
+        print(&#34;Returning props&#34;)
+        return self.get_properties()[LE_ADVERTISEMENT_IFACE]
+
+    @dbus.service.method(LE_ADVERTISEMENT_IFACE, in_signature=&#34;&#34;, out_signature=&#34;yo&#34;)
+    def Release(self):
+        &#34;&#34;&#34; This method gets called when the service daemon removes the Advertisement. A client can use it to do cleanup tasks.&#34;&#34;&#34;
+        print(&#34;%s: Released!&#34; % self.path)
+
+    # String to Hexadecimal
+    def string_hex(self, data):
+        &#34;&#34;&#34; This method gets called to convert the string data into hex to be used in the advertising packet. &#34;&#34;&#34;
+        hex_data = binascii.b2a_hex(data.encode())
+        hex_array = bytearray.fromhex(hex_data.decode(&#34;utf-8&#34;))
+        hex_array.insert(0, 0x16)
+        return hex_array</code></pre>
+</details>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li>dbus.service.Object</li>
+<li>dbus.service.Interface</li>
+</ul>
+<h3>Class variables</h3>
+<dl>
+<dt id="advertisement.Advertisement.PATH_BASE"><code class="name">var <span class="ident">PATH_BASE</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+</dl>
+<h3>Methods</h3>
+<dl>
+<dt id="advertisement.Advertisement.GetAll"><code class="name flex">
+<span>def <span class="ident">GetAll</span></span>(<span>self, interface)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>This method gets called when the service daemon request for all of the advertising properties.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@dbus.service.method(DBUS_PROP_IFACE, in_signature=&#34;s&#34;, out_signature=&#34;a{sv}&#34;)
+
+# Get all properties of the BLE
+def GetAll(self, interface):
+    &#34;&#34;&#34;This method gets called when the service daemon request for all of the advertising properties.&#34;&#34;&#34;
+    if interface != LE_ADVERTISEMENT_IFACE:
+        raise InvalidArgsException()
+    print(&#34;Returning props&#34;)
+    return self.get_properties()[LE_ADVERTISEMENT_IFACE]</code></pre>
+</details>
+</dd>
+<dt id="advertisement.Advertisement.Release"><code class="name flex">
+<span>def <span class="ident">Release</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>This method gets called when the service daemon removes the Advertisement. A client can use it to do cleanup tasks.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@dbus.service.method(LE_ADVERTISEMENT_IFACE, in_signature=&#34;&#34;, out_signature=&#34;yo&#34;)
+def Release(self):
+    &#34;&#34;&#34; This method gets called when the service daemon removes the Advertisement. A client can use it to do cleanup tasks.&#34;&#34;&#34;
+    print(&#34;%s: Released!&#34; % self.path)</code></pre>
+</details>
+</dd>
+<dt id="advertisement.Advertisement.add_data"><code class="name flex">
+<span>def <span class="ident">add_data</span></span>(<span>self, ad_type, data)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>This method gets called to add custom data to the advertising packet.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def add_data(self, ad_type, data):
+    &#34;&#34;&#34;This method gets called to add custom data to the advertising packet.&#34;&#34;&#34;
+    if not self.data:
+        self.data = dbus.Dictionary({}, signature=&#34;yv&#34;)
+    self.data[ad_type] = dbus.Array(data, signature=&#34;y&#34;)</code></pre>
+</details>
+</dd>
+<dt id="advertisement.Advertisement.add_local_name"><code class="name flex">
+<span>def <span class="ident">add_local_name</span></span>(<span>self, name)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>This method gets called to add custom name to the BLE device.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def add_local_name(self, name):
+    &#34;&#34;&#34; This method gets called to add custom name to the BLE device. &#34;&#34;&#34;
+    if not self.local_name:
+        self.local_name = &#34;&#34;
+    self.local_name = dbus.String(name)</code></pre>
+</details>
+</dd>
+<dt id="advertisement.Advertisement.add_service_uuid"><code class="name flex">
+<span>def <span class="ident">add_service_uuid</span></span>(<span>self, uuid)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>This method gets called to add service uuids to the list that is added in the advertising packet.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def add_service_uuid(self, uuid):
+    &#34;&#34;&#34; This method gets called to add service uuids to the list that is added in the advertising packet.&#34;&#34;&#34;
+    if not self.service_uuids:
+        self.service_uuids = []
+    self.service_uuids.append(uuid)</code></pre>
+</details>
+</dd>
+<dt id="advertisement.Advertisement.get_path"><code class="name flex">
+<span>def <span class="ident">get_path</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>This method gets called to get the path of the interface dbus used for the BLE.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def get_path(self):
+    &#34;&#34;&#34; This method gets called to get the path of the interface dbus used for the BLE.&#34;&#34;&#34;
+    return dbus.ObjectPath(self.path)</code></pre>
+</details>
+</dd>
+<dt id="advertisement.Advertisement.get_properties"><code class="name flex">
+<span>def <span class="ident">get_properties</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>This method gets called when the service daemon request for the advertising propertises.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def get_properties(self):
+    &#34;&#34;&#34; This method gets called when the service daemon request for the advertising propertises.&#34;&#34;&#34;
+    properties = dict()
+    properties[&#34;Type&#34;] = self.ad_type
+
+    if self.service_uuids is not None:
+        properties[&#34;ServiceUUIDs&#34;] = dbus.Array(self.service_uuids, signature=&#34;s&#34;)
+    if self.local_name is not None:
+        properties[&#34;LocalName&#34;] = dbus.String(self.local_name)
+    if self.include_tx_power is not None:
+        properties[&#34;IncludeTxPower&#34;] = dbus.Boolean(self.include_tx_power)
+    if self.data is not None:
+        properties[&#34;Data&#34;] = dbus.Dictionary(self.data, signature=&#34;yv&#34;)
+
+    return {LE_ADVERTISEMENT_IFACE: properties}</code></pre>
+</details>
+</dd>
+<dt id="advertisement.Advertisement.string_hex"><code class="name flex">
+<span>def <span class="ident">string_hex</span></span>(<span>self, data)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>This method gets called to convert the string data into hex to be used in the advertising packet.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def string_hex(self, data):
+    &#34;&#34;&#34; This method gets called to convert the string data into hex to be used in the advertising packet. &#34;&#34;&#34;
+    hex_data = binascii.b2a_hex(data.encode())
+    hex_array = bytearray.fromhex(hex_data.decode(&#34;utf-8&#34;))
+    hex_array.insert(0, 0x16)
+    return hex_array</code></pre>
+</details>
+</dd>
+</dl>
+</dd>
+</dl>
+</section>
+</article>
+<nav id="sidebar">
+<h1>Index</h1>
+<div class="toc">
+<ul></ul>
+</div>
+<ul id="index">
+<li><h3><a href="#header-functions">Functions</a></h3>
+<ul class="">
+<li><code><a title="advertisement.adv_error_callback" href="#advertisement.adv_error_callback">adv_error_callback</a></code></li>
+<li><code><a title="advertisement.advertisement_callback" href="#advertisement.advertisement_callback">advertisement_callback</a></code></li>
+</ul>
+</li>
+<li><h3><a href="#header-classes">Classes</a></h3>
+<ul>
+<li>
+<h4><code><a title="advertisement.Advertisement" href="#advertisement.Advertisement">Advertisement</a></code></h4>
+<ul class="two-column">
+<li><code><a title="advertisement.Advertisement.GetAll" href="#advertisement.Advertisement.GetAll">GetAll</a></code></li>
+<li><code><a title="advertisement.Advertisement.PATH_BASE" href="#advertisement.Advertisement.PATH_BASE">PATH_BASE</a></code></li>
+<li><code><a title="advertisement.Advertisement.Release" href="#advertisement.Advertisement.Release">Release</a></code></li>
+<li><code><a title="advertisement.Advertisement.add_data" href="#advertisement.Advertisement.add_data">add_data</a></code></li>
+<li><code><a title="advertisement.Advertisement.add_local_name" href="#advertisement.Advertisement.add_local_name">add_local_name</a></code></li>
+<li><code><a title="advertisement.Advertisement.add_service_uuid" href="#advertisement.Advertisement.add_service_uuid">add_service_uuid</a></code></li>
+<li><code><a title="advertisement.Advertisement.get_path" href="#advertisement.Advertisement.get_path">get_path</a></code></li>
+<li><code><a title="advertisement.Advertisement.get_properties" href="#advertisement.Advertisement.get_properties">get_properties</a></code></li>
+<li><code><a title="advertisement.Advertisement.string_hex" href="#advertisement.Advertisement.string_hex">string_hex</a></code></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</nav>
+</main>
+<footer id="footer">
+<p>Generated by <a href="https://pdoc3.github.io/pdoc"><cite>pdoc</cite> 0.9.1</a>.</p>
+</footer>
+</body>
+</html>

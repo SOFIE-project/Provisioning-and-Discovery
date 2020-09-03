@@ -1,0 +1,840 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
+<meta name="generator" content="pdoc 0.9.1" />
+<title>gatt_server API documentation</title>
+<meta name="description" content="BLE GATT description …" />
+<link rel="preload stylesheet" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/11.0.1/sanitize.min.css" integrity="sha256-PK9q560IAAa6WVRRh76LtCaI8pjTJ2z11v0miyNNjrs=" crossorigin>
+<link rel="preload stylesheet" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/11.0.1/typography.min.css" integrity="sha256-7l/o7C8jubJiy74VsKTidCy1yBkRtiUGbVkYBylBqUg=" crossorigin>
+<link rel="stylesheet preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/styles/github.min.css" crossorigin>
+<style>:root{--highlight-color:#fe9}.flex{display:flex !important}body{line-height:1.5em}#content{padding:20px}#sidebar{padding:30px;overflow:hidden}#sidebar > *:last-child{margin-bottom:2cm}.http-server-breadcrumbs{font-size:130%;margin:0 0 15px 0}#footer{font-size:.75em;padding:5px 30px;border-top:1px solid #ddd;text-align:right}#footer p{margin:0 0 0 1em;display:inline-block}#footer p:last-child{margin-right:30px}h1,h2,h3,h4,h5{font-weight:300}h1{font-size:2.5em;line-height:1.1em}h2{font-size:1.75em;margin:1em 0 .50em 0}h3{font-size:1.4em;margin:25px 0 10px 0}h4{margin:0;font-size:105%}h1:target,h2:target,h3:target,h4:target,h5:target,h6:target{background:var(--highlight-color);padding:.2em 0}a{color:#058;text-decoration:none;transition:color .3s ease-in-out}a:hover{color:#e82}.title code{font-weight:bold}h2[id^="header-"]{margin-top:2em}.ident{color:#900}pre code{background:#f8f8f8;font-size:.8em;line-height:1.4em}code{background:#f2f2f1;padding:1px 4px;overflow-wrap:break-word}h1 code{background:transparent}pre{background:#f8f8f8;border:0;border-top:1px solid #ccc;border-bottom:1px solid #ccc;margin:1em 0;padding:1ex}#http-server-module-list{display:flex;flex-flow:column}#http-server-module-list div{display:flex}#http-server-module-list dt{min-width:10%}#http-server-module-list p{margin-top:0}.toc ul,#index{list-style-type:none;margin:0;padding:0}#index code{background:transparent}#index h3{border-bottom:1px solid #ddd}#index ul{padding:0}#index h4{margin-top:.6em;font-weight:bold}@media (min-width:200ex){#index .two-column{column-count:2}}@media (min-width:300ex){#index .two-column{column-count:3}}dl{margin-bottom:2em}dl dl:last-child{margin-bottom:4em}dd{margin:0 0 1em 3em}#header-classes + dl > dd{margin-bottom:3em}dd dd{margin-left:2em}dd p{margin:10px 0}.name{background:#eee;font-weight:bold;font-size:.85em;padding:5px 10px;display:inline-block;min-width:40%}.name:hover{background:#e0e0e0}dt:target .name{background:var(--highlight-color)}.name > span:first-child{white-space:nowrap}.name.class > span:nth-child(2){margin-left:.4em}.inherited{color:#999;border-left:5px solid #eee;padding-left:1em}.inheritance em{font-style:normal;font-weight:bold}.desc h2{font-weight:400;font-size:1.25em}.desc h3{font-size:1em}.desc dt code{background:inherit}.source summary,.git-link-div{color:#666;text-align:right;font-weight:400;font-size:.8em;text-transform:uppercase}.source summary > *{white-space:nowrap;cursor:pointer}.git-link{color:inherit;margin-left:1em}.source pre{max-height:500px;overflow:auto;margin:0}.source pre code{font-size:12px;overflow:visible}.hlist{list-style:none}.hlist li{display:inline}.hlist li:after{content:',\2002'}.hlist li:last-child:after{content:none}.hlist .hlist{display:inline;padding-left:1em}img{max-width:100%}td{padding:0 .5em}.admonition{padding:.1em .5em;margin-bottom:1em}.admonition-title{font-weight:bold}.admonition.note,.admonition.info,.admonition.important{background:#aef}.admonition.todo,.admonition.versionadded,.admonition.tip,.admonition.hint{background:#dfd}.admonition.warning,.admonition.versionchanged,.admonition.deprecated{background:#fd4}.admonition.error,.admonition.danger,.admonition.caution{background:lightpink}</style>
+<style media="screen and (min-width: 700px)">@media screen and (min-width:700px){#sidebar{width:30%;height:100vh;overflow:auto;position:sticky;top:0}#content{width:70%;max-width:100ch;padding:3em 4em;border-left:1px solid #ddd}pre code{font-size:1em}.item .name{font-size:1em}main{display:flex;flex-direction:row-reverse;justify-content:flex-end}.toc ul ul,#index ul{padding-left:1.5em}.toc > ul > li{margin-top:.5em}}</style>
+<style media="print">@media print{#sidebar h1{page-break-before:always}.source{display:none}}@media print{*{background:transparent !important;color:#000 !important;box-shadow:none !important;text-shadow:none !important}a[href]:after{content:" (" attr(href) ")";font-size:90%}a[href][title]:after{content:none}abbr[title]:after{content:" (" attr(title) ")"}.ir a:after,a[href^="javascript:"]:after,a[href^="#"]:after{content:""}pre,blockquote{border:1px solid #999;page-break-inside:avoid}thead{display:table-header-group}tr,img{page-break-inside:avoid}img{max-width:100% !important}@page{margin:0.5cm}p,h2,h3{orphans:3;widows:3}h1,h2,h3,h4,h5,h6{page-break-after:avoid}}</style>
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/highlight.min.js" integrity="sha256-Uv3H6lx7dJmRfRvH8TH6kJD1TSK1aFcwgx+mdg3epi8=" crossorigin></script>
+<script>window.addEventListener('DOMContentLoaded', () => hljs.initHighlighting())</script>
+</head>
+<body>
+<main>
+<article id="content">
+<header>
+<h1 class="title">Module <code>gatt_server</code></h1>
+</header>
+<section id="section-intro">
+<p>BLE GATT description</p>
+<p>GATT services share the same high-level D-Bus. Support for D-Bus Object
+Manager is mandatory for external services to allow seamless
+GATT declarations (Service and Characteristic) discovery. GATT Manager allows
+applications to register GATT services and profiles.</p>
+<p>Applications implementing services must register the services
+using GattManager1 registration method and must implement the methods and
+properties defined in GattService1 interface.</p>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">&#34;&#34;&#34;
+BLE GATT description
+
+GATT services share the same high-level D-Bus. Support for D-Bus Object
+Manager is mandatory for external services to allow seamless
+GATT declarations (Service and Characteristic) discovery. GATT Manager allows
+applications to register GATT services and profiles.
+
+Applications implementing services must register the services
+using GattManager1 registration method and must implement the methods and
+properties defined in GattService1 interface.
+            
+&#34;&#34;&#34;
+
+import sys
+import dbus
+import dbus.exceptions
+import dbus.mainloop.glib
+import dbus.service
+import array
+from random import randint
+
+try:
+    from gi.repository import GObject
+except ImportError:
+    import gobject as GObject
+
+mainloop = None
+
+DBUS_OM_IFACE = &#34;org.freedesktop.DBus.ObjectManager&#34;
+DBUS_PROP_IFACE = &#34;org.freedesktop.DBus.Properties&#34;
+GATT_MANAGER_IFACE = &#34;org.bluez.GattManager1&#34;
+GATT_SERVICE_IFACE = &#34;org.bluez.GattService1&#34;
+GATT_CHRC_IFACE = &#34;org.bluez.GattCharacteristic1&#34;
+
+
+class Service(dbus.service.Object):
+    &#34;&#34;&#34; Service Class for GATT Server &#34;&#34;&#34;
+
+    PATH_BASE = &#34;/src/service&#34;
+
+    def __init__(self, bus, index, uuid, primary):
+        &#34;&#34;&#34;
+            :param string UUID: 128-bit service UUID.
+            :param boolean Primary: Indicates whether or not this GATT service is a primary service. If false, the service is secondary.
+            :param array{object} Characteristics: Array of object paths representing the characteristics of this service. This property is set only when the characteristic discovery has been completed.
+        &#34;&#34;&#34;
+        self.path = self.PATH_BASE + str(index)
+        self.bus = bus
+        self.uuid = uuid
+        self.primary = primary
+        self.characteristics = []
+        dbus.service.Object.__init__(self, bus, self.path)
+
+    def get_properties(self):
+        &#34;&#34;&#34; This method gets called when the service daemon request for the Service propertises.&#34;&#34;&#34;
+        return {
+            GATT_SERVICE_IFACE: {
+                &#34;UUID&#34;: self.uuid,
+                &#34;Primary&#34;: self.primary,
+                &#34;Characteristics&#34;: dbus.Array(
+                    self.get_characteristic_paths(), signature=&#34;o&#34;
+                ),
+            }
+        }
+
+    def get_path(self):
+        &#34;&#34;&#34; This method gets called to get the Object path of the dbus used for the BLE service. &#34;&#34;&#34;
+        return dbus.ObjectPath(self.path)
+
+    def add_characteristic(self, characteristic):
+        &#34;&#34;&#34; This method gets called to add characteristics to the list that is later added to the GATT service.&#34;&#34;&#34;
+        self.characteristics.append(characteristic)
+
+    def get_characteristic_paths(self):
+        &#34;&#34;&#34; This method gets called when the service request for Object paths of the characteristics. &#34;&#34;&#34;
+        result = []
+        for chrc in self.characteristics:
+            result.append(chrc.get_path())
+        return result
+
+    def get_characteristics(self):
+        &#34;&#34;&#34; This method gets called when the service request for all of the GATT Service characteristics. &#34;&#34;&#34;
+        return self.characteristics
+
+    @dbus.service.method(DBUS_PROP_IFACE, in_signature=&#34;s&#34;, out_signature=&#34;a{sv}&#34;)
+    def GetAll(self, interface):
+        &#34;&#34;&#34; This method gets called when the daemon request for all of the properties of GATT Service. &#34;&#34;&#34;
+        if interface != GATT_SERVICE_IFACE:
+            raise InvalidArgsException()
+        return self.get_properties()[GATT_SERVICE_IFACE]
+
+
+class Characteristic(dbus.service.Object):
+    &#34;&#34;&#34; Characteristics for the GATT Service &#34;&#34;&#34;
+
+    def __init__(self, bus, index, uuid, flags, service):
+        &#34;&#34;&#34;
+            :param string UUID: 128-bit Characteristic UUID.
+            :param object Service: Object path of the GATT service the characteristc belongs to.
+            :param array{byte} Value: The cached value of the characteristic. This property gets updated only after a successful read request.
+            :param array{string} Flags: Defines how the characteristic value can be used.Allowed values:
+                &#34;broadcast&#34;
+                &#34;read&#34;
+                &#34;write-without-response&#34;
+                &#34;write&#34;
+                &#34;notify&#34;
+            :param array{object} Descriptors: Array of object paths representing the descriptors of this service.
+            &#34;&#34;&#34;
+        self.path = service.path + &#34;/char&#34; + str(index)
+        self.bus = bus
+        self.uuid = uuid
+        self.service = service
+        self.flags = flags
+        self.descriptors = []
+        dbus.service.Object.__init__(self, bus, self.path)
+
+    def get_properties(self):
+        &#34;&#34;&#34; This method gets called when the service daemon request for the characteristic propertises.&#34;&#34;&#34;
+        return {
+            GATT_CHRC_IFACE: {
+                &#34;Service&#34;: self.service.get_path(),
+                &#34;UUID&#34;: self.uuid,
+                &#34;Flags&#34;: self.flags,
+                &#34;Descriptors&#34;: dbus.Array(self.get_descriptor_paths(), signature=&#34;o&#34;),
+            }
+        }
+
+    def get_path(self):
+        &#34;&#34;&#34; This method gets called to get the Object path of the interface dbus used for the characteristic. &#34;&#34;&#34;
+        return dbus.ObjectPath(self.path)
+
+    def add_descriptor(self, descriptor):
+        &#34;&#34;&#34;This method gets called to add descriptor to the list that is then added to the characteristics.&#34;&#34;&#34;
+        self.descriptors.append(descriptor)
+
+    def get_descriptor_paths(self):
+        &#34;&#34;&#34;This method gets called to get the descriptor path.&#34;&#34;&#34;
+        result = []
+        for desc in self.descriptors:
+            result.append(desc.get_path())
+        return result
+
+    def get_descriptors(self):
+        &#34;&#34;&#34;This method gets called to get the descriptor.&#34;&#34;&#34;
+        return self.descriptors
+
+    @dbus.service.method(DBUS_PROP_IFACE, in_signature=&#34;s&#34;, out_signature=&#34;a{sv}&#34;)
+    def GetAll(self, interface):
+        &#34;&#34;&#34; This method gets called when the service request for all of the Characteristic properties.&#34;&#34;&#34;
+        if interface != GATT_CHRC_IFACE:
+            raise InvalidArgsException()
+
+        return self.get_properties()[GATT_CHRC_IFACE]
+
+    @dbus.service.method(GATT_CHRC_IFACE, in_signature=&#34;a{sv}&#34;, out_signature=&#34;ay&#34;)
+    def ReadValue(self, options):
+        &#34;&#34;&#34; Issues a request to read the value of the characteristic and returns the value if the operation was successful.&#34;&#34;&#34;
+        print(&#34;Default ReadValue called, returning error&#34;)
+        raise NotSupportedException()
+
+    @dbus.service.method(GATT_CHRC_IFACE, in_signature=&#34;aya{sv}&#34;)
+    def WriteValue(self, value, options):
+        &#34;&#34;&#34; Issues a request to write the value of the characteristic.&#34;&#34;&#34;
+        print(&#34;Default WriteValue called, returning error&#34;)
+        raise NotSupportedException()
+
+    @dbus.service.method(GATT_CHRC_IFACE)
+    def StartNotify(self):
+        &#34;&#34;&#34; Starts a notification session from this characteristic if it supports value notifications or indications. &#34;&#34;&#34;
+        print(&#34;Default StartNotify called, returning error&#34;)
+        raise NotSupportedException()
+
+    @dbus.service.method(GATT_CHRC_IFACE)
+    def StopNotify(self):
+        &#34;&#34;&#34; This method will cancel any previous StartNotify transaction.&#34;&#34;&#34;
+        print(&#34;Default StopNotify called, returning error&#34;)
+        raise NotSupportedException()
+
+    @dbus.service.signal(DBUS_PROP_IFACE, signature=&#34;sa{sv}as&#34;)
+    def PropertiesChanged(self, interface, changed, invalidated):
+        pass
+
+
+# Callback for Sucess application
+def application_callback():
+    &#34;&#34;&#34; This method gets called when the a service object is registered succussfully and sent over the GATT.&#34;&#34;&#34;
+    print(&#34;GATT application registered&#34;)
+
+
+# Callback for Error application
+def app_error_callback(error):
+    &#34;&#34;&#34; This method gets called when the a service object is not registered and error message is displayed to the client.&#34;&#34;&#34;
+    print(&#34;Failed to register application: &#34; + str(error))
+    mainloop.quit()</code></pre>
+</details>
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+<h2 class="section-title" id="header-functions">Functions</h2>
+<dl>
+<dt id="gatt_server.app_error_callback"><code class="name flex">
+<span>def <span class="ident">app_error_callback</span></span>(<span>error)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>This method gets called when the a service object is not registered and error message is displayed to the client.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def app_error_callback(error):
+    &#34;&#34;&#34; This method gets called when the a service object is not registered and error message is displayed to the client.&#34;&#34;&#34;
+    print(&#34;Failed to register application: &#34; + str(error))
+    mainloop.quit()</code></pre>
+</details>
+</dd>
+<dt id="gatt_server.application_callback"><code class="name flex">
+<span>def <span class="ident">application_callback</span></span>(<span>)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>This method gets called when the a service object is registered succussfully and sent over the GATT.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def application_callback():
+    &#34;&#34;&#34; This method gets called when the a service object is registered succussfully and sent over the GATT.&#34;&#34;&#34;
+    print(&#34;GATT application registered&#34;)</code></pre>
+</details>
+</dd>
+</dl>
+</section>
+<section>
+<h2 class="section-title" id="header-classes">Classes</h2>
+<dl>
+<dt id="gatt_server.Characteristic"><code class="flex name class">
+<span>class <span class="ident">Characteristic</span></span>
+<span>(</span><span>bus, index, uuid, flags, service)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Characteristics for the GATT Service </p>
+<p>:param string UUID: 128-bit Characteristic UUID.
+:param object Service: Object path of the GATT service the characteristc belongs to.
+:param array{byte} Value: The cached value of the characteristic. This property gets updated only after a successful read request.
+:param array{string} Flags: Defines how the characteristic value can be used.Allowed values:
+"broadcast"
+"read"
+"write-without-response"
+"write"
+"notify"
+:param array{object} Descriptors: Array of object paths representing the descriptors of this service.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class Characteristic(dbus.service.Object):
+    &#34;&#34;&#34; Characteristics for the GATT Service &#34;&#34;&#34;
+
+    def __init__(self, bus, index, uuid, flags, service):
+        &#34;&#34;&#34;
+            :param string UUID: 128-bit Characteristic UUID.
+            :param object Service: Object path of the GATT service the characteristc belongs to.
+            :param array{byte} Value: The cached value of the characteristic. This property gets updated only after a successful read request.
+            :param array{string} Flags: Defines how the characteristic value can be used.Allowed values:
+                &#34;broadcast&#34;
+                &#34;read&#34;
+                &#34;write-without-response&#34;
+                &#34;write&#34;
+                &#34;notify&#34;
+            :param array{object} Descriptors: Array of object paths representing the descriptors of this service.
+            &#34;&#34;&#34;
+        self.path = service.path + &#34;/char&#34; + str(index)
+        self.bus = bus
+        self.uuid = uuid
+        self.service = service
+        self.flags = flags
+        self.descriptors = []
+        dbus.service.Object.__init__(self, bus, self.path)
+
+    def get_properties(self):
+        &#34;&#34;&#34; This method gets called when the service daemon request for the characteristic propertises.&#34;&#34;&#34;
+        return {
+            GATT_CHRC_IFACE: {
+                &#34;Service&#34;: self.service.get_path(),
+                &#34;UUID&#34;: self.uuid,
+                &#34;Flags&#34;: self.flags,
+                &#34;Descriptors&#34;: dbus.Array(self.get_descriptor_paths(), signature=&#34;o&#34;),
+            }
+        }
+
+    def get_path(self):
+        &#34;&#34;&#34; This method gets called to get the Object path of the interface dbus used for the characteristic. &#34;&#34;&#34;
+        return dbus.ObjectPath(self.path)
+
+    def add_descriptor(self, descriptor):
+        &#34;&#34;&#34;This method gets called to add descriptor to the list that is then added to the characteristics.&#34;&#34;&#34;
+        self.descriptors.append(descriptor)
+
+    def get_descriptor_paths(self):
+        &#34;&#34;&#34;This method gets called to get the descriptor path.&#34;&#34;&#34;
+        result = []
+        for desc in self.descriptors:
+            result.append(desc.get_path())
+        return result
+
+    def get_descriptors(self):
+        &#34;&#34;&#34;This method gets called to get the descriptor.&#34;&#34;&#34;
+        return self.descriptors
+
+    @dbus.service.method(DBUS_PROP_IFACE, in_signature=&#34;s&#34;, out_signature=&#34;a{sv}&#34;)
+    def GetAll(self, interface):
+        &#34;&#34;&#34; This method gets called when the service request for all of the Characteristic properties.&#34;&#34;&#34;
+        if interface != GATT_CHRC_IFACE:
+            raise InvalidArgsException()
+
+        return self.get_properties()[GATT_CHRC_IFACE]
+
+    @dbus.service.method(GATT_CHRC_IFACE, in_signature=&#34;a{sv}&#34;, out_signature=&#34;ay&#34;)
+    def ReadValue(self, options):
+        &#34;&#34;&#34; Issues a request to read the value of the characteristic and returns the value if the operation was successful.&#34;&#34;&#34;
+        print(&#34;Default ReadValue called, returning error&#34;)
+        raise NotSupportedException()
+
+    @dbus.service.method(GATT_CHRC_IFACE, in_signature=&#34;aya{sv}&#34;)
+    def WriteValue(self, value, options):
+        &#34;&#34;&#34; Issues a request to write the value of the characteristic.&#34;&#34;&#34;
+        print(&#34;Default WriteValue called, returning error&#34;)
+        raise NotSupportedException()
+
+    @dbus.service.method(GATT_CHRC_IFACE)
+    def StartNotify(self):
+        &#34;&#34;&#34; Starts a notification session from this characteristic if it supports value notifications or indications. &#34;&#34;&#34;
+        print(&#34;Default StartNotify called, returning error&#34;)
+        raise NotSupportedException()
+
+    @dbus.service.method(GATT_CHRC_IFACE)
+    def StopNotify(self):
+        &#34;&#34;&#34; This method will cancel any previous StartNotify transaction.&#34;&#34;&#34;
+        print(&#34;Default StopNotify called, returning error&#34;)
+        raise NotSupportedException()
+
+    @dbus.service.signal(DBUS_PROP_IFACE, signature=&#34;sa{sv}as&#34;)
+    def PropertiesChanged(self, interface, changed, invalidated):
+        pass</code></pre>
+</details>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li>dbus.service.Object</li>
+<li>dbus.service.Interface</li>
+</ul>
+<h3>Methods</h3>
+<dl>
+<dt id="gatt_server.Characteristic.GetAll"><code class="name flex">
+<span>def <span class="ident">GetAll</span></span>(<span>self, interface)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>This method gets called when the service request for all of the Characteristic properties.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@dbus.service.method(DBUS_PROP_IFACE, in_signature=&#34;s&#34;, out_signature=&#34;a{sv}&#34;)
+def GetAll(self, interface):
+    &#34;&#34;&#34; This method gets called when the service request for all of the Characteristic properties.&#34;&#34;&#34;
+    if interface != GATT_CHRC_IFACE:
+        raise InvalidArgsException()
+
+    return self.get_properties()[GATT_CHRC_IFACE]</code></pre>
+</details>
+</dd>
+<dt id="gatt_server.Characteristic.PropertiesChanged"><code class="name flex">
+<span>def <span class="ident">PropertiesChanged</span></span>(<span>self, *args, **keywords)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def emit_signal(self, *args, **keywords):
+    abs_path = None
+    if path_keyword is not None:
+        if self.SUPPORTS_MULTIPLE_OBJECT_PATHS:
+            raise TypeError(&#39;path_keyword cannot be used on the &#39;
+                            &#39;signals of an object that supports &#39;
+                            &#39;multiple object paths&#39;)
+        abs_path = keywords.pop(path_keyword, None)
+        if (abs_path != self.__dbus_object_path__ and
+            not self.__dbus_object_path__.startswith(abs_path + &#39;/&#39;)):
+            raise ValueError(&#39;Path %r is not below %r&#39;, abs_path,
+                             self.__dbus_object_path__)
+
+    rel_path = None
+    if rel_path_keyword is not None:
+        rel_path = keywords.pop(rel_path_keyword, None)
+
+    func(self, *args, **keywords)
+
+    for location in self.locations:
+        if abs_path is None:
+            # non-deprecated case
+            if rel_path is None or rel_path in (&#39;/&#39;, &#39;&#39;):
+                object_path = location[1]
+            else:
+                # will be validated by SignalMessage ctor in a moment
+                object_path = location[1] + rel_path
+        else:
+            object_path = abs_path
+
+        message = SignalMessage(object_path,
+                                               dbus_interface,
+                                               member_name)
+        message.append(signature=signature, *args)
+
+        location[0].send_message(message)</code></pre>
+</details>
+</dd>
+<dt id="gatt_server.Characteristic.ReadValue"><code class="name flex">
+<span>def <span class="ident">ReadValue</span></span>(<span>self, options)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Issues a request to read the value of the characteristic and returns the value if the operation was successful.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@dbus.service.method(GATT_CHRC_IFACE, in_signature=&#34;a{sv}&#34;, out_signature=&#34;ay&#34;)
+def ReadValue(self, options):
+    &#34;&#34;&#34; Issues a request to read the value of the characteristic and returns the value if the operation was successful.&#34;&#34;&#34;
+    print(&#34;Default ReadValue called, returning error&#34;)
+    raise NotSupportedException()</code></pre>
+</details>
+</dd>
+<dt id="gatt_server.Characteristic.StartNotify"><code class="name flex">
+<span>def <span class="ident">StartNotify</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Starts a notification session from this characteristic if it supports value notifications or indications.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@dbus.service.method(GATT_CHRC_IFACE)
+def StartNotify(self):
+    &#34;&#34;&#34; Starts a notification session from this characteristic if it supports value notifications or indications. &#34;&#34;&#34;
+    print(&#34;Default StartNotify called, returning error&#34;)
+    raise NotSupportedException()</code></pre>
+</details>
+</dd>
+<dt id="gatt_server.Characteristic.StopNotify"><code class="name flex">
+<span>def <span class="ident">StopNotify</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>This method will cancel any previous StartNotify transaction.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@dbus.service.method(GATT_CHRC_IFACE)
+def StopNotify(self):
+    &#34;&#34;&#34; This method will cancel any previous StartNotify transaction.&#34;&#34;&#34;
+    print(&#34;Default StopNotify called, returning error&#34;)
+    raise NotSupportedException()</code></pre>
+</details>
+</dd>
+<dt id="gatt_server.Characteristic.WriteValue"><code class="name flex">
+<span>def <span class="ident">WriteValue</span></span>(<span>self, value, options)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Issues a request to write the value of the characteristic.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@dbus.service.method(GATT_CHRC_IFACE, in_signature=&#34;aya{sv}&#34;)
+def WriteValue(self, value, options):
+    &#34;&#34;&#34; Issues a request to write the value of the characteristic.&#34;&#34;&#34;
+    print(&#34;Default WriteValue called, returning error&#34;)
+    raise NotSupportedException()</code></pre>
+</details>
+</dd>
+<dt id="gatt_server.Characteristic.add_descriptor"><code class="name flex">
+<span>def <span class="ident">add_descriptor</span></span>(<span>self, descriptor)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>This method gets called to add descriptor to the list that is then added to the characteristics.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def add_descriptor(self, descriptor):
+    &#34;&#34;&#34;This method gets called to add descriptor to the list that is then added to the characteristics.&#34;&#34;&#34;
+    self.descriptors.append(descriptor)</code></pre>
+</details>
+</dd>
+<dt id="gatt_server.Characteristic.get_descriptor_paths"><code class="name flex">
+<span>def <span class="ident">get_descriptor_paths</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>This method gets called to get the descriptor path.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def get_descriptor_paths(self):
+    &#34;&#34;&#34;This method gets called to get the descriptor path.&#34;&#34;&#34;
+    result = []
+    for desc in self.descriptors:
+        result.append(desc.get_path())
+    return result</code></pre>
+</details>
+</dd>
+<dt id="gatt_server.Characteristic.get_descriptors"><code class="name flex">
+<span>def <span class="ident">get_descriptors</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>This method gets called to get the descriptor.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def get_descriptors(self):
+    &#34;&#34;&#34;This method gets called to get the descriptor.&#34;&#34;&#34;
+    return self.descriptors</code></pre>
+</details>
+</dd>
+<dt id="gatt_server.Characteristic.get_path"><code class="name flex">
+<span>def <span class="ident">get_path</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>This method gets called to get the Object path of the interface dbus used for the characteristic.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def get_path(self):
+    &#34;&#34;&#34; This method gets called to get the Object path of the interface dbus used for the characteristic. &#34;&#34;&#34;
+    return dbus.ObjectPath(self.path)</code></pre>
+</details>
+</dd>
+<dt id="gatt_server.Characteristic.get_properties"><code class="name flex">
+<span>def <span class="ident">get_properties</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>This method gets called when the service daemon request for the characteristic propertises.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def get_properties(self):
+    &#34;&#34;&#34; This method gets called when the service daemon request for the characteristic propertises.&#34;&#34;&#34;
+    return {
+        GATT_CHRC_IFACE: {
+            &#34;Service&#34;: self.service.get_path(),
+            &#34;UUID&#34;: self.uuid,
+            &#34;Flags&#34;: self.flags,
+            &#34;Descriptors&#34;: dbus.Array(self.get_descriptor_paths(), signature=&#34;o&#34;),
+        }
+    }</code></pre>
+</details>
+</dd>
+</dl>
+</dd>
+<dt id="gatt_server.Service"><code class="flex name class">
+<span>class <span class="ident">Service</span></span>
+<span>(</span><span>bus, index, uuid, primary)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Service Class for GATT Server </p>
+<p>:param string UUID: 128-bit service UUID.
+:param boolean Primary: Indicates whether or not this GATT service is a primary service. If false, the service is secondary.
+:param array{object} Characteristics: Array of object paths representing the characteristics of this service. This property is set only when the characteristic discovery has been completed.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class Service(dbus.service.Object):
+    &#34;&#34;&#34; Service Class for GATT Server &#34;&#34;&#34;
+
+    PATH_BASE = &#34;/src/service&#34;
+
+    def __init__(self, bus, index, uuid, primary):
+        &#34;&#34;&#34;
+            :param string UUID: 128-bit service UUID.
+            :param boolean Primary: Indicates whether or not this GATT service is a primary service. If false, the service is secondary.
+            :param array{object} Characteristics: Array of object paths representing the characteristics of this service. This property is set only when the characteristic discovery has been completed.
+        &#34;&#34;&#34;
+        self.path = self.PATH_BASE + str(index)
+        self.bus = bus
+        self.uuid = uuid
+        self.primary = primary
+        self.characteristics = []
+        dbus.service.Object.__init__(self, bus, self.path)
+
+    def get_properties(self):
+        &#34;&#34;&#34; This method gets called when the service daemon request for the Service propertises.&#34;&#34;&#34;
+        return {
+            GATT_SERVICE_IFACE: {
+                &#34;UUID&#34;: self.uuid,
+                &#34;Primary&#34;: self.primary,
+                &#34;Characteristics&#34;: dbus.Array(
+                    self.get_characteristic_paths(), signature=&#34;o&#34;
+                ),
+            }
+        }
+
+    def get_path(self):
+        &#34;&#34;&#34; This method gets called to get the Object path of the dbus used for the BLE service. &#34;&#34;&#34;
+        return dbus.ObjectPath(self.path)
+
+    def add_characteristic(self, characteristic):
+        &#34;&#34;&#34; This method gets called to add characteristics to the list that is later added to the GATT service.&#34;&#34;&#34;
+        self.characteristics.append(characteristic)
+
+    def get_characteristic_paths(self):
+        &#34;&#34;&#34; This method gets called when the service request for Object paths of the characteristics. &#34;&#34;&#34;
+        result = []
+        for chrc in self.characteristics:
+            result.append(chrc.get_path())
+        return result
+
+    def get_characteristics(self):
+        &#34;&#34;&#34; This method gets called when the service request for all of the GATT Service characteristics. &#34;&#34;&#34;
+        return self.characteristics
+
+    @dbus.service.method(DBUS_PROP_IFACE, in_signature=&#34;s&#34;, out_signature=&#34;a{sv}&#34;)
+    def GetAll(self, interface):
+        &#34;&#34;&#34; This method gets called when the daemon request for all of the properties of GATT Service. &#34;&#34;&#34;
+        if interface != GATT_SERVICE_IFACE:
+            raise InvalidArgsException()
+        return self.get_properties()[GATT_SERVICE_IFACE]</code></pre>
+</details>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li>dbus.service.Object</li>
+<li>dbus.service.Interface</li>
+</ul>
+<h3>Class variables</h3>
+<dl>
+<dt id="gatt_server.Service.PATH_BASE"><code class="name">var <span class="ident">PATH_BASE</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+</dl>
+<h3>Methods</h3>
+<dl>
+<dt id="gatt_server.Service.GetAll"><code class="name flex">
+<span>def <span class="ident">GetAll</span></span>(<span>self, interface)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>This method gets called when the daemon request for all of the properties of GATT Service.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@dbus.service.method(DBUS_PROP_IFACE, in_signature=&#34;s&#34;, out_signature=&#34;a{sv}&#34;)
+def GetAll(self, interface):
+    &#34;&#34;&#34; This method gets called when the daemon request for all of the properties of GATT Service. &#34;&#34;&#34;
+    if interface != GATT_SERVICE_IFACE:
+        raise InvalidArgsException()
+    return self.get_properties()[GATT_SERVICE_IFACE]</code></pre>
+</details>
+</dd>
+<dt id="gatt_server.Service.add_characteristic"><code class="name flex">
+<span>def <span class="ident">add_characteristic</span></span>(<span>self, characteristic)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>This method gets called to add characteristics to the list that is later added to the GATT service.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def add_characteristic(self, characteristic):
+    &#34;&#34;&#34; This method gets called to add characteristics to the list that is later added to the GATT service.&#34;&#34;&#34;
+    self.characteristics.append(characteristic)</code></pre>
+</details>
+</dd>
+<dt id="gatt_server.Service.get_characteristic_paths"><code class="name flex">
+<span>def <span class="ident">get_characteristic_paths</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>This method gets called when the service request for Object paths of the characteristics.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def get_characteristic_paths(self):
+    &#34;&#34;&#34; This method gets called when the service request for Object paths of the characteristics. &#34;&#34;&#34;
+    result = []
+    for chrc in self.characteristics:
+        result.append(chrc.get_path())
+    return result</code></pre>
+</details>
+</dd>
+<dt id="gatt_server.Service.get_characteristics"><code class="name flex">
+<span>def <span class="ident">get_characteristics</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>This method gets called when the service request for all of the GATT Service characteristics.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def get_characteristics(self):
+    &#34;&#34;&#34; This method gets called when the service request for all of the GATT Service characteristics. &#34;&#34;&#34;
+    return self.characteristics</code></pre>
+</details>
+</dd>
+<dt id="gatt_server.Service.get_path"><code class="name flex">
+<span>def <span class="ident">get_path</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>This method gets called to get the Object path of the dbus used for the BLE service.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def get_path(self):
+    &#34;&#34;&#34; This method gets called to get the Object path of the dbus used for the BLE service. &#34;&#34;&#34;
+    return dbus.ObjectPath(self.path)</code></pre>
+</details>
+</dd>
+<dt id="gatt_server.Service.get_properties"><code class="name flex">
+<span>def <span class="ident">get_properties</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>This method gets called when the service daemon request for the Service propertises.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def get_properties(self):
+    &#34;&#34;&#34; This method gets called when the service daemon request for the Service propertises.&#34;&#34;&#34;
+    return {
+        GATT_SERVICE_IFACE: {
+            &#34;UUID&#34;: self.uuid,
+            &#34;Primary&#34;: self.primary,
+            &#34;Characteristics&#34;: dbus.Array(
+                self.get_characteristic_paths(), signature=&#34;o&#34;
+            ),
+        }
+    }</code></pre>
+</details>
+</dd>
+</dl>
+</dd>
+</dl>
+</section>
+</article>
+<nav id="sidebar">
+<h1>Index</h1>
+<div class="toc">
+<ul></ul>
+</div>
+<ul id="index">
+<li><h3><a href="#header-functions">Functions</a></h3>
+<ul class="">
+<li><code><a title="gatt_server.app_error_callback" href="#gatt_server.app_error_callback">app_error_callback</a></code></li>
+<li><code><a title="gatt_server.application_callback" href="#gatt_server.application_callback">application_callback</a></code></li>
+</ul>
+</li>
+<li><h3><a href="#header-classes">Classes</a></h3>
+<ul>
+<li>
+<h4><code><a title="gatt_server.Characteristic" href="#gatt_server.Characteristic">Characteristic</a></code></h4>
+<ul class="">
+<li><code><a title="gatt_server.Characteristic.GetAll" href="#gatt_server.Characteristic.GetAll">GetAll</a></code></li>
+<li><code><a title="gatt_server.Characteristic.PropertiesChanged" href="#gatt_server.Characteristic.PropertiesChanged">PropertiesChanged</a></code></li>
+<li><code><a title="gatt_server.Characteristic.ReadValue" href="#gatt_server.Characteristic.ReadValue">ReadValue</a></code></li>
+<li><code><a title="gatt_server.Characteristic.StartNotify" href="#gatt_server.Characteristic.StartNotify">StartNotify</a></code></li>
+<li><code><a title="gatt_server.Characteristic.StopNotify" href="#gatt_server.Characteristic.StopNotify">StopNotify</a></code></li>
+<li><code><a title="gatt_server.Characteristic.WriteValue" href="#gatt_server.Characteristic.WriteValue">WriteValue</a></code></li>
+<li><code><a title="gatt_server.Characteristic.add_descriptor" href="#gatt_server.Characteristic.add_descriptor">add_descriptor</a></code></li>
+<li><code><a title="gatt_server.Characteristic.get_descriptor_paths" href="#gatt_server.Characteristic.get_descriptor_paths">get_descriptor_paths</a></code></li>
+<li><code><a title="gatt_server.Characteristic.get_descriptors" href="#gatt_server.Characteristic.get_descriptors">get_descriptors</a></code></li>
+<li><code><a title="gatt_server.Characteristic.get_path" href="#gatt_server.Characteristic.get_path">get_path</a></code></li>
+<li><code><a title="gatt_server.Characteristic.get_properties" href="#gatt_server.Characteristic.get_properties">get_properties</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="gatt_server.Service" href="#gatt_server.Service">Service</a></code></h4>
+<ul class="">
+<li><code><a title="gatt_server.Service.GetAll" href="#gatt_server.Service.GetAll">GetAll</a></code></li>
+<li><code><a title="gatt_server.Service.PATH_BASE" href="#gatt_server.Service.PATH_BASE">PATH_BASE</a></code></li>
+<li><code><a title="gatt_server.Service.add_characteristic" href="#gatt_server.Service.add_characteristic">add_characteristic</a></code></li>
+<li><code><a title="gatt_server.Service.get_characteristic_paths" href="#gatt_server.Service.get_characteristic_paths">get_characteristic_paths</a></code></li>
+<li><code><a title="gatt_server.Service.get_characteristics" href="#gatt_server.Service.get_characteristics">get_characteristics</a></code></li>
+<li><code><a title="gatt_server.Service.get_path" href="#gatt_server.Service.get_path">get_path</a></code></li>
+<li><code><a title="gatt_server.Service.get_properties" href="#gatt_server.Service.get_properties">get_properties</a></code></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</nav>
+</main>
+<footer id="footer">
+<p>Generated by <a href="https://pdoc3.github.io/pdoc"><cite>pdoc</cite> 0.9.1</a>.</p>
+</footer>
+</body>
+</html>

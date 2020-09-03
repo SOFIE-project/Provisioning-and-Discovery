@@ -1,0 +1,803 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
+<meta name="generator" content="pdoc 0.9.1" />
+<title>gatt_application API documentation</title>
+<meta name="description" content="BLE Application Description …" />
+<link rel="preload stylesheet" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/11.0.1/sanitize.min.css" integrity="sha256-PK9q560IAAa6WVRRh76LtCaI8pjTJ2z11v0miyNNjrs=" crossorigin>
+<link rel="preload stylesheet" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/11.0.1/typography.min.css" integrity="sha256-7l/o7C8jubJiy74VsKTidCy1yBkRtiUGbVkYBylBqUg=" crossorigin>
+<link rel="stylesheet preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/styles/github.min.css" crossorigin>
+<style>:root{--highlight-color:#fe9}.flex{display:flex !important}body{line-height:1.5em}#content{padding:20px}#sidebar{padding:30px;overflow:hidden}#sidebar > *:last-child{margin-bottom:2cm}.http-server-breadcrumbs{font-size:130%;margin:0 0 15px 0}#footer{font-size:.75em;padding:5px 30px;border-top:1px solid #ddd;text-align:right}#footer p{margin:0 0 0 1em;display:inline-block}#footer p:last-child{margin-right:30px}h1,h2,h3,h4,h5{font-weight:300}h1{font-size:2.5em;line-height:1.1em}h2{font-size:1.75em;margin:1em 0 .50em 0}h3{font-size:1.4em;margin:25px 0 10px 0}h4{margin:0;font-size:105%}h1:target,h2:target,h3:target,h4:target,h5:target,h6:target{background:var(--highlight-color);padding:.2em 0}a{color:#058;text-decoration:none;transition:color .3s ease-in-out}a:hover{color:#e82}.title code{font-weight:bold}h2[id^="header-"]{margin-top:2em}.ident{color:#900}pre code{background:#f8f8f8;font-size:.8em;line-height:1.4em}code{background:#f2f2f1;padding:1px 4px;overflow-wrap:break-word}h1 code{background:transparent}pre{background:#f8f8f8;border:0;border-top:1px solid #ccc;border-bottom:1px solid #ccc;margin:1em 0;padding:1ex}#http-server-module-list{display:flex;flex-flow:column}#http-server-module-list div{display:flex}#http-server-module-list dt{min-width:10%}#http-server-module-list p{margin-top:0}.toc ul,#index{list-style-type:none;margin:0;padding:0}#index code{background:transparent}#index h3{border-bottom:1px solid #ddd}#index ul{padding:0}#index h4{margin-top:.6em;font-weight:bold}@media (min-width:200ex){#index .two-column{column-count:2}}@media (min-width:300ex){#index .two-column{column-count:3}}dl{margin-bottom:2em}dl dl:last-child{margin-bottom:4em}dd{margin:0 0 1em 3em}#header-classes + dl > dd{margin-bottom:3em}dd dd{margin-left:2em}dd p{margin:10px 0}.name{background:#eee;font-weight:bold;font-size:.85em;padding:5px 10px;display:inline-block;min-width:40%}.name:hover{background:#e0e0e0}dt:target .name{background:var(--highlight-color)}.name > span:first-child{white-space:nowrap}.name.class > span:nth-child(2){margin-left:.4em}.inherited{color:#999;border-left:5px solid #eee;padding-left:1em}.inheritance em{font-style:normal;font-weight:bold}.desc h2{font-weight:400;font-size:1.25em}.desc h3{font-size:1em}.desc dt code{background:inherit}.source summary,.git-link-div{color:#666;text-align:right;font-weight:400;font-size:.8em;text-transform:uppercase}.source summary > *{white-space:nowrap;cursor:pointer}.git-link{color:inherit;margin-left:1em}.source pre{max-height:500px;overflow:auto;margin:0}.source pre code{font-size:12px;overflow:visible}.hlist{list-style:none}.hlist li{display:inline}.hlist li:after{content:',\2002'}.hlist li:last-child:after{content:none}.hlist .hlist{display:inline;padding-left:1em}img{max-width:100%}td{padding:0 .5em}.admonition{padding:.1em .5em;margin-bottom:1em}.admonition-title{font-weight:bold}.admonition.note,.admonition.info,.admonition.important{background:#aef}.admonition.todo,.admonition.versionadded,.admonition.tip,.admonition.hint{background:#dfd}.admonition.warning,.admonition.versionchanged,.admonition.deprecated{background:#fd4}.admonition.error,.admonition.danger,.admonition.caution{background:lightpink}</style>
+<style media="screen and (min-width: 700px)">@media screen and (min-width:700px){#sidebar{width:30%;height:100vh;overflow:auto;position:sticky;top:0}#content{width:70%;max-width:100ch;padding:3em 4em;border-left:1px solid #ddd}pre code{font-size:1em}.item .name{font-size:1em}main{display:flex;flex-direction:row-reverse;justify-content:flex-end}.toc ul ul,#index ul{padding-left:1.5em}.toc > ul > li{margin-top:.5em}}</style>
+<style media="print">@media print{#sidebar h1{page-break-before:always}.source{display:none}}@media print{*{background:transparent !important;color:#000 !important;box-shadow:none !important;text-shadow:none !important}a[href]:after{content:" (" attr(href) ")";font-size:90%}a[href][title]:after{content:none}abbr[title]:after{content:" (" attr(title) ")"}.ir a:after,a[href^="javascript:"]:after,a[href^="#"]:after{content:""}pre,blockquote{border:1px solid #999;page-break-inside:avoid}thead{display:table-header-group}tr,img{page-break-inside:avoid}img{max-width:100% !important}@page{margin:0.5cm}p,h2,h3{orphans:3;widows:3}h1,h2,h3,h4,h5,h6{page-break-after:avoid}}</style>
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/highlight.min.js" integrity="sha256-Uv3H6lx7dJmRfRvH8TH6kJD1TSK1aFcwgx+mdg3epi8=" crossorigin></script>
+<script>window.addEventListener('DOMContentLoaded', () => hljs.initHighlighting())</script>
+</head>
+<body>
+<main>
+<article id="content">
+<header>
+<h1 class="title">Module <code>gatt_application</code></h1>
+</header>
+<section id="section-intro">
+<p>BLE Application Description</p>
+<p>This is the custom BLE application for the discovery and provisioning component. It
+creates a custom Service and Advertising packet for the component.</p>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">&#34;&#34;&#34;
+BLE Application Description
+
+This is the custom BLE application for the discovery and provisioning component. It
+creates a custom Service and Advertising packet for the component.
+
+&#34;&#34;&#34;
+
+import sys
+import dbus, dbus.mainloop.glib
+from gi.repository import GLib
+from advertisement import Advertisement
+from advertisement import advertisement_callback, adv_error_callback
+from gatt_server import Service, Characteristic
+from gatt_server import application_callback, app_error_callback
+
+SERVICE_NAME = &#34;org.bluez&#34;
+DBUS_OM_IFACE = &#34;org.freedesktop.DBus.ObjectManager&#34;
+LE_ADVERTISING_MANAGER_IFACE = &#34;org.bluez.LEAdvertisingManager1&#34;
+GATT_MANAGER_IFACE = &#34;org.bluez.GattManager1&#34;
+GATT_CHRC_IFACE = &#34;org.bluez.GattCharacteristic1&#34;
+UART_SERVICE_UUID = &#34;6e400001-b5a3-f393-e0a9-e50e24dcca9e&#34;
+UART_RX_CHARACTERISTIC_UUID = &#34;6e400002-b5a3-f393-e0a9-e50e24dcca9e&#34;
+UART_TX_CHARACTERISTIC_UUID = &#34;6e400003-b5a3-f393-e0a9-e50e24dcca9e&#34;
+EDDYSTONE_UUID = None
+mainloop = None
+
+# Transmitter for the BLE
+class TxCharacteristic(Characteristic):
+    &#34;&#34;&#34; Transmitter characteristic for the UART service&#34;&#34;&#34;
+
+    def __init__(self, bus, index, service):
+        Characteristic.__init__(
+            self, bus, index, UART_TX_CHARACTERISTIC_UUID, [&#34;notify&#34;], service
+        )
+        self.notifying = False
+        GLib.io_add_watch(sys.stdin, GLib.IO_IN, self.on_console_input)
+
+    def on_console_input(self, fd, condition):
+        &#34;&#34;&#34; This method is used to get the input from the user to be send over BLE transmitter.&#34;&#34;&#34;
+        s = fd.readline()
+        if s.isspace():
+            pass
+        else:
+            self.send_tx(s)
+        return True
+
+    def send_tx(self, s):
+        &#34;&#34;&#34; This method is used to send the message to the client.&#34;&#34;&#34;
+        if not self.notifying:
+            return
+        value = []
+        for c in s:
+            value.append(dbus.Byte(c.encode()))
+        self.PropertiesChanged(GATT_CHRC_IFACE, {&#34;Value&#34;: value}, [])
+
+    def StartNotify(self):
+        &#34;&#34;&#34; Starts a notification session from this characteristic if it supports value notifications or indications. &#34;&#34;&#34;
+        if self.notifying:
+            return
+        self.notifying = True
+
+    def StopNotify(self):
+        &#34;&#34;&#34; This method will cancel any previous StartNotify transaction. &#34;&#34;&#34;
+        if not self.notifying:
+            return
+        self.notifying = False
+
+
+# Receiver for the BLE
+class RxCharacteristic(Characteristic):
+    &#34;&#34;&#34; Receiver characteristic for the UART service&#34;&#34;&#34;
+
+    def __init__(self, bus, index, service):
+        Characteristic.__init__(
+            self, bus, index, UART_RX_CHARACTERISTIC_UUID, [&#34;write&#34;], service
+        )
+
+    def WriteValue(self, value, options):
+        &#34;&#34;&#34;Issues a request to write the value of the characteristic.&#34;&#34;&#34;
+        print(&#34;remoting: {}&#34;.format(bytearray(value).decode()))
+        global EDDYSTONE_UUID
+        EDDYSTONE_UUID = bytearray(value).decode()
+        mainloop.quit()
+
+
+# Custom UART Service
+class UartService(Service):
+    &#34;&#34;&#34; Custom Service for the GATT &#34;&#34;&#34;
+
+    def __init__(self, bus, index):
+        Service.__init__(self, bus, index, UART_SERVICE_UUID, True)
+        self.add_characteristic(TxCharacteristic(bus, 0, self))
+        self.add_characteristic(RxCharacteristic(bus, 1, self))
+
+
+class Application(dbus.service.Object):
+    &#34;&#34;&#34; Application class for the BLE device &#34;&#34;&#34;
+
+    def __init__(self, bus):
+        self.path = &#34;/&#34;
+        self.services = []
+        dbus.service.Object.__init__(self, bus, self.path)
+
+    def get_path(self):
+        return dbus.ObjectPath(self.path)
+
+    def add_service(self, service):
+        self.services.append(service)
+
+    @dbus.service.method(DBUS_OM_IFACE, out_signature=&#34;a{oa{sa{sv}}}&#34;)
+    def GetManagedObjects(self):
+        response = {}
+        for service in self.services:
+            response[service.get_path()] = service.get_properties()
+            chrcs = service.get_characteristics()
+            for chrc in chrcs:
+                response[chrc.get_path()] = chrc.get_properties()
+        return response
+
+
+class CustomApplication(Application):
+    &#34;&#34;&#34; BLE custom application with UART service &#34;&#34;&#34;
+
+    def __init__(self, bus):
+        Application.__init__(self, bus)
+        self.add_service(UartService(bus, 0))
+
+
+# BLE Custom Advertisement with URL
+class CustomAdvertisement(Advertisement):
+    &#34;&#34;&#34; BLE Custom Advertisement with URL &#34;&#34;&#34;
+
+    def __init__(self, bus, index, name, uuid, url):
+        Advertisement.__init__(self, bus, index, &#34;peripheral&#34;)
+        self.add_service_uuid(uuid)
+        self.include_tx_power = True
+        self.add_local_name(name)
+        self.add_data(0x24, self.string_hex(url))
+
+
+# Finding adapter for bluetooth
+def find_adapter(bus):
+    remote_om = dbus.Interface(bus.get_object(SERVICE_NAME, &#34;/&#34;), DBUS_OM_IFACE)
+    objects = remote_om.GetManagedObjects()
+    for o, props in objects.items():
+        if LE_ADVERTISING_MANAGER_IFACE in props and GATT_MANAGER_IFACE in props:
+            return o
+        print(&#34;Skip adapter:&#34;, o)
+    return None
+
+
+# Main Class
+def BLE(name, uuid, url):
+    global mainloop
+    # Communicate with system services
+    dbus.mainloop.glib.DBusGMainLoop(set_as_default=True)
+    bus = dbus.SystemBus()
+    # BLE Adapter
+    adapter = find_adapter(bus)
+    if not adapter:
+        print(&#34;Interface not found&#34;)
+        return
+    # Interface for Services and advertisement
+    service_manager = dbus.Interface(
+        bus.get_object(SERVICE_NAME, adapter), GATT_MANAGER_IFACE
+    )
+    ad_manager = dbus.Interface(
+        bus.get_object(SERVICE_NAME, adapter), LE_ADVERTISING_MANAGER_IFACE
+    )
+    # Custom BLE service and advertisement
+    application = CustomApplication(bus)
+    advertisement = CustomAdvertisement(bus, 0, name, uuid, url)
+
+    mainloop = GLib.MainLoop()
+
+    # &gt;Resgister the BLE
+    service_manager.RegisterApplication(
+        application.get_path(),
+        {},
+        reply_handler=application_callback,
+        error_handler=app_error_callback,
+    )
+    ad_manager.RegisterAdvertisement(
+        advertisement.get_path(),
+        {},
+        reply_handler=advertisement_callback,
+        error_handler=adv_error_callback,
+    )
+
+    try:
+        mainloop.run()
+        advertisement.Release()
+        return EDDYSTONE_UUID
+    except KeyboardInterrupt:
+        advertisement.Release()</code></pre>
+</details>
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+<h2 class="section-title" id="header-functions">Functions</h2>
+<dl>
+<dt id="gatt_application.BLE"><code class="name flex">
+<span>def <span class="ident">BLE</span></span>(<span>name, uuid, url)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def BLE(name, uuid, url):
+    global mainloop
+    # Communicate with system services
+    dbus.mainloop.glib.DBusGMainLoop(set_as_default=True)
+    bus = dbus.SystemBus()
+    # BLE Adapter
+    adapter = find_adapter(bus)
+    if not adapter:
+        print(&#34;Interface not found&#34;)
+        return
+    # Interface for Services and advertisement
+    service_manager = dbus.Interface(
+        bus.get_object(SERVICE_NAME, adapter), GATT_MANAGER_IFACE
+    )
+    ad_manager = dbus.Interface(
+        bus.get_object(SERVICE_NAME, adapter), LE_ADVERTISING_MANAGER_IFACE
+    )
+    # Custom BLE service and advertisement
+    application = CustomApplication(bus)
+    advertisement = CustomAdvertisement(bus, 0, name, uuid, url)
+
+    mainloop = GLib.MainLoop()
+
+    # &gt;Resgister the BLE
+    service_manager.RegisterApplication(
+        application.get_path(),
+        {},
+        reply_handler=application_callback,
+        error_handler=app_error_callback,
+    )
+    ad_manager.RegisterAdvertisement(
+        advertisement.get_path(),
+        {},
+        reply_handler=advertisement_callback,
+        error_handler=adv_error_callback,
+    )
+
+    try:
+        mainloop.run()
+        advertisement.Release()
+        return EDDYSTONE_UUID
+    except KeyboardInterrupt:
+        advertisement.Release()</code></pre>
+</details>
+</dd>
+<dt id="gatt_application.find_adapter"><code class="name flex">
+<span>def <span class="ident">find_adapter</span></span>(<span>bus)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def find_adapter(bus):
+    remote_om = dbus.Interface(bus.get_object(SERVICE_NAME, &#34;/&#34;), DBUS_OM_IFACE)
+    objects = remote_om.GetManagedObjects()
+    for o, props in objects.items():
+        if LE_ADVERTISING_MANAGER_IFACE in props and GATT_MANAGER_IFACE in props:
+            return o
+        print(&#34;Skip adapter:&#34;, o)
+    return None</code></pre>
+</details>
+</dd>
+</dl>
+</section>
+<section>
+<h2 class="section-title" id="header-classes">Classes</h2>
+<dl>
+<dt id="gatt_application.Application"><code class="flex name class">
+<span>class <span class="ident">Application</span></span>
+<span>(</span><span>bus)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Application class for the BLE device </p>
+<p>Constructor. Either conn or bus_name is required; object_path
+is also required.</p>
+<p>:Parameters:
+<code>conn</code> : dbus.connection.Connection or None
+The connection on which to export this object.</p>
+<pre><code>    If None, use the Bus associated with the given &lt;code&gt;bus\_name&lt;/code&gt;.
+    If there is no &lt;code&gt;bus\_name&lt;/code&gt; either, the object is not
+    initially available on any Connection.
+
+    For backwards compatibility, if an instance of
+    dbus.service.BusName is passed as the first parameter,
+    this is equivalent to passing its associated Bus as
+    &lt;code&gt;conn&lt;/code&gt;, and passing the BusName itself as &lt;code&gt;bus\_name&lt;/code&gt;.
+
+&lt;code&gt;object\_path&lt;/code&gt; : str or None
+    A D-Bus object path at which to make this Object available
+    immediately. If this is not None, a &lt;code&gt;conn&lt;/code&gt; or &lt;code&gt;bus\_name&lt;/code&gt; must
+    also be provided.
+
+&lt;code&gt;bus\_name&lt;/code&gt; : dbus.service.BusName or None
+    Represents a well-known name claimed by this process. A
+    reference to the BusName object will be held by this
+    Object, preventing the name from being released during this
+    Object's lifetime (unless it's released manually).
+</code></pre></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class Application(dbus.service.Object):
+    &#34;&#34;&#34; Application class for the BLE device &#34;&#34;&#34;
+
+    def __init__(self, bus):
+        self.path = &#34;/&#34;
+        self.services = []
+        dbus.service.Object.__init__(self, bus, self.path)
+
+    def get_path(self):
+        return dbus.ObjectPath(self.path)
+
+    def add_service(self, service):
+        self.services.append(service)
+
+    @dbus.service.method(DBUS_OM_IFACE, out_signature=&#34;a{oa{sa{sv}}}&#34;)
+    def GetManagedObjects(self):
+        response = {}
+        for service in self.services:
+            response[service.get_path()] = service.get_properties()
+            chrcs = service.get_characteristics()
+            for chrc in chrcs:
+                response[chrc.get_path()] = chrc.get_properties()
+        return response</code></pre>
+</details>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li>dbus.service.Object</li>
+<li>dbus.service.Interface</li>
+</ul>
+<h3>Subclasses</h3>
+<ul class="hlist">
+<li><a title="gatt_application.CustomApplication" href="#gatt_application.CustomApplication">CustomApplication</a></li>
+</ul>
+<h3>Methods</h3>
+<dl>
+<dt id="gatt_application.Application.GetManagedObjects"><code class="name flex">
+<span>def <span class="ident">GetManagedObjects</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@dbus.service.method(DBUS_OM_IFACE, out_signature=&#34;a{oa{sa{sv}}}&#34;)
+def GetManagedObjects(self):
+    response = {}
+    for service in self.services:
+        response[service.get_path()] = service.get_properties()
+        chrcs = service.get_characteristics()
+        for chrc in chrcs:
+            response[chrc.get_path()] = chrc.get_properties()
+    return response</code></pre>
+</details>
+</dd>
+<dt id="gatt_application.Application.add_service"><code class="name flex">
+<span>def <span class="ident">add_service</span></span>(<span>self, service)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def add_service(self, service):
+    self.services.append(service)</code></pre>
+</details>
+</dd>
+<dt id="gatt_application.Application.get_path"><code class="name flex">
+<span>def <span class="ident">get_path</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def get_path(self):
+    return dbus.ObjectPath(self.path)</code></pre>
+</details>
+</dd>
+</dl>
+</dd>
+<dt id="gatt_application.CustomAdvertisement"><code class="flex name class">
+<span>class <span class="ident">CustomAdvertisement</span></span>
+<span>(</span><span>bus, index, name, uuid, url)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>BLE Custom Advertisement with URL </p>
+<p>:param string Name: Name of the BLE device to shown when scanning.
+:param string Type: Determines the type of advertising packet requested. Possible values: "broadcast" or "peripheral"
+:param array{string} ServiceUUID: List of UUIDs to include in the "Service UUID" field of the Advertising Data.
+:param dict ManufacturerData: Manufactuer Data fields to include in the Advertising Data.
+:param dict ServiceData: Service Data elements to include. The keys are the UUID to associate with the data.
+:param bool IncludeTxPower: Includes the Tx Power in the advertising packet.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class CustomAdvertisement(Advertisement):
+    &#34;&#34;&#34; BLE Custom Advertisement with URL &#34;&#34;&#34;
+
+    def __init__(self, bus, index, name, uuid, url):
+        Advertisement.__init__(self, bus, index, &#34;peripheral&#34;)
+        self.add_service_uuid(uuid)
+        self.include_tx_power = True
+        self.add_local_name(name)
+        self.add_data(0x24, self.string_hex(url))</code></pre>
+</details>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li>advertisement.Advertisement</li>
+<li>dbus.service.Object</li>
+<li>dbus.service.Interface</li>
+</ul>
+</dd>
+<dt id="gatt_application.CustomApplication"><code class="flex name class">
+<span>class <span class="ident">CustomApplication</span></span>
+<span>(</span><span>bus)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>BLE custom application with UART service </p>
+<p>Constructor. Either conn or bus_name is required; object_path
+is also required.</p>
+<p>:Parameters:
+<code>conn</code> : dbus.connection.Connection or None
+The connection on which to export this object.</p>
+<pre><code>    If None, use the Bus associated with the given &lt;code&gt;bus\_name&lt;/code&gt;.
+    If there is no &lt;code&gt;bus\_name&lt;/code&gt; either, the object is not
+    initially available on any Connection.
+
+    For backwards compatibility, if an instance of
+    dbus.service.BusName is passed as the first parameter,
+    this is equivalent to passing its associated Bus as
+    &lt;code&gt;conn&lt;/code&gt;, and passing the BusName itself as &lt;code&gt;bus\_name&lt;/code&gt;.
+
+&lt;code&gt;object\_path&lt;/code&gt; : str or None
+    A D-Bus object path at which to make this Object available
+    immediately. If this is not None, a &lt;code&gt;conn&lt;/code&gt; or &lt;code&gt;bus\_name&lt;/code&gt; must
+    also be provided.
+
+&lt;code&gt;bus\_name&lt;/code&gt; : dbus.service.BusName or None
+    Represents a well-known name claimed by this process. A
+    reference to the BusName object will be held by this
+    Object, preventing the name from being released during this
+    Object's lifetime (unless it's released manually).
+</code></pre></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class CustomApplication(Application):
+    &#34;&#34;&#34; BLE custom application with UART service &#34;&#34;&#34;
+
+    def __init__(self, bus):
+        Application.__init__(self, bus)
+        self.add_service(UartService(bus, 0))</code></pre>
+</details>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li><a title="gatt_application.Application" href="#gatt_application.Application">Application</a></li>
+<li>dbus.service.Object</li>
+<li>dbus.service.Interface</li>
+</ul>
+</dd>
+<dt id="gatt_application.RxCharacteristic"><code class="flex name class">
+<span>class <span class="ident">RxCharacteristic</span></span>
+<span>(</span><span>bus, index, service)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Receiver characteristic for the UART service</p>
+<p>:param string UUID: 128-bit Characteristic UUID.
+:param object Service: Object path of the GATT service the characteristc belongs to.
+:param array{byte} Value: The cached value of the characteristic. This property gets updated only after a successful read request.
+:param array{string} Flags: Defines how the characteristic value can be used.Allowed values:
+"broadcast"
+"read"
+"write-without-response"
+"write"
+"notify"
+:param array{object} Descriptors: Array of object paths representing the descriptors of this service.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class RxCharacteristic(Characteristic):
+    &#34;&#34;&#34; Receiver characteristic for the UART service&#34;&#34;&#34;
+
+    def __init__(self, bus, index, service):
+        Characteristic.__init__(
+            self, bus, index, UART_RX_CHARACTERISTIC_UUID, [&#34;write&#34;], service
+        )
+
+    def WriteValue(self, value, options):
+        &#34;&#34;&#34;Issues a request to write the value of the characteristic.&#34;&#34;&#34;
+        print(&#34;remoting: {}&#34;.format(bytearray(value).decode()))
+        global EDDYSTONE_UUID
+        EDDYSTONE_UUID = bytearray(value).decode()
+        mainloop.quit()</code></pre>
+</details>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li>gatt_server.Characteristic</li>
+<li>dbus.service.Object</li>
+<li>dbus.service.Interface</li>
+</ul>
+<h3>Methods</h3>
+<dl>
+<dt id="gatt_application.RxCharacteristic.WriteValue"><code class="name flex">
+<span>def <span class="ident">WriteValue</span></span>(<span>self, value, options)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Issues a request to write the value of the characteristic.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def WriteValue(self, value, options):
+    &#34;&#34;&#34;Issues a request to write the value of the characteristic.&#34;&#34;&#34;
+    print(&#34;remoting: {}&#34;.format(bytearray(value).decode()))
+    global EDDYSTONE_UUID
+    EDDYSTONE_UUID = bytearray(value).decode()
+    mainloop.quit()</code></pre>
+</details>
+</dd>
+</dl>
+</dd>
+<dt id="gatt_application.TxCharacteristic"><code class="flex name class">
+<span>class <span class="ident">TxCharacteristic</span></span>
+<span>(</span><span>bus, index, service)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Transmitter characteristic for the UART service</p>
+<p>:param string UUID: 128-bit Characteristic UUID.
+:param object Service: Object path of the GATT service the characteristc belongs to.
+:param array{byte} Value: The cached value of the characteristic. This property gets updated only after a successful read request.
+:param array{string} Flags: Defines how the characteristic value can be used.Allowed values:
+"broadcast"
+"read"
+"write-without-response"
+"write"
+"notify"
+:param array{object} Descriptors: Array of object paths representing the descriptors of this service.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class TxCharacteristic(Characteristic):
+    &#34;&#34;&#34; Transmitter characteristic for the UART service&#34;&#34;&#34;
+
+    def __init__(self, bus, index, service):
+        Characteristic.__init__(
+            self, bus, index, UART_TX_CHARACTERISTIC_UUID, [&#34;notify&#34;], service
+        )
+        self.notifying = False
+        GLib.io_add_watch(sys.stdin, GLib.IO_IN, self.on_console_input)
+
+    def on_console_input(self, fd, condition):
+        &#34;&#34;&#34; This method is used to get the input from the user to be send over BLE transmitter.&#34;&#34;&#34;
+        s = fd.readline()
+        if s.isspace():
+            pass
+        else:
+            self.send_tx(s)
+        return True
+
+    def send_tx(self, s):
+        &#34;&#34;&#34; This method is used to send the message to the client.&#34;&#34;&#34;
+        if not self.notifying:
+            return
+        value = []
+        for c in s:
+            value.append(dbus.Byte(c.encode()))
+        self.PropertiesChanged(GATT_CHRC_IFACE, {&#34;Value&#34;: value}, [])
+
+    def StartNotify(self):
+        &#34;&#34;&#34; Starts a notification session from this characteristic if it supports value notifications or indications. &#34;&#34;&#34;
+        if self.notifying:
+            return
+        self.notifying = True
+
+    def StopNotify(self):
+        &#34;&#34;&#34; This method will cancel any previous StartNotify transaction. &#34;&#34;&#34;
+        if not self.notifying:
+            return
+        self.notifying = False</code></pre>
+</details>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li>gatt_server.Characteristic</li>
+<li>dbus.service.Object</li>
+<li>dbus.service.Interface</li>
+</ul>
+<h3>Methods</h3>
+<dl>
+<dt id="gatt_application.TxCharacteristic.StartNotify"><code class="name flex">
+<span>def <span class="ident">StartNotify</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Starts a notification session from this characteristic if it supports value notifications or indications.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def StartNotify(self):
+    &#34;&#34;&#34; Starts a notification session from this characteristic if it supports value notifications or indications. &#34;&#34;&#34;
+    if self.notifying:
+        return
+    self.notifying = True</code></pre>
+</details>
+</dd>
+<dt id="gatt_application.TxCharacteristic.StopNotify"><code class="name flex">
+<span>def <span class="ident">StopNotify</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>This method will cancel any previous StartNotify transaction.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def StopNotify(self):
+    &#34;&#34;&#34; This method will cancel any previous StartNotify transaction. &#34;&#34;&#34;
+    if not self.notifying:
+        return
+    self.notifying = False</code></pre>
+</details>
+</dd>
+<dt id="gatt_application.TxCharacteristic.on_console_input"><code class="name flex">
+<span>def <span class="ident">on_console_input</span></span>(<span>self, fd, condition)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>This method is used to get the input from the user to be send over BLE transmitter.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def on_console_input(self, fd, condition):
+    &#34;&#34;&#34; This method is used to get the input from the user to be send over BLE transmitter.&#34;&#34;&#34;
+    s = fd.readline()
+    if s.isspace():
+        pass
+    else:
+        self.send_tx(s)
+    return True</code></pre>
+</details>
+</dd>
+<dt id="gatt_application.TxCharacteristic.send_tx"><code class="name flex">
+<span>def <span class="ident">send_tx</span></span>(<span>self, s)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>This method is used to send the message to the client.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def send_tx(self, s):
+    &#34;&#34;&#34; This method is used to send the message to the client.&#34;&#34;&#34;
+    if not self.notifying:
+        return
+    value = []
+    for c in s:
+        value.append(dbus.Byte(c.encode()))
+    self.PropertiesChanged(GATT_CHRC_IFACE, {&#34;Value&#34;: value}, [])</code></pre>
+</details>
+</dd>
+</dl>
+</dd>
+<dt id="gatt_application.UartService"><code class="flex name class">
+<span>class <span class="ident">UartService</span></span>
+<span>(</span><span>bus, index)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Custom Service for the GATT </p>
+<p>:param string UUID: 128-bit service UUID.
+:param boolean Primary: Indicates whether or not this GATT service is a primary service. If false, the service is secondary.
+:param array{object} Characteristics: Array of object paths representing the characteristics of this service. This property is set only when the characteristic discovery has been completed.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class UartService(Service):
+    &#34;&#34;&#34; Custom Service for the GATT &#34;&#34;&#34;
+
+    def __init__(self, bus, index):
+        Service.__init__(self, bus, index, UART_SERVICE_UUID, True)
+        self.add_characteristic(TxCharacteristic(bus, 0, self))
+        self.add_characteristic(RxCharacteristic(bus, 1, self))</code></pre>
+</details>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li>gatt_server.Service</li>
+<li>dbus.service.Object</li>
+<li>dbus.service.Interface</li>
+</ul>
+</dd>
+</dl>
+</section>
+</article>
+<nav id="sidebar">
+<h1>Index</h1>
+<div class="toc">
+<ul></ul>
+</div>
+<ul id="index">
+<li><h3><a href="#header-functions">Functions</a></h3>
+<ul class="">
+<li><code><a title="gatt_application.BLE" href="#gatt_application.BLE">BLE</a></code></li>
+<li><code><a title="gatt_application.find_adapter" href="#gatt_application.find_adapter">find_adapter</a></code></li>
+</ul>
+</li>
+<li><h3><a href="#header-classes">Classes</a></h3>
+<ul>
+<li>
+<h4><code><a title="gatt_application.Application" href="#gatt_application.Application">Application</a></code></h4>
+<ul class="">
+<li><code><a title="gatt_application.Application.GetManagedObjects" href="#gatt_application.Application.GetManagedObjects">GetManagedObjects</a></code></li>
+<li><code><a title="gatt_application.Application.add_service" href="#gatt_application.Application.add_service">add_service</a></code></li>
+<li><code><a title="gatt_application.Application.get_path" href="#gatt_application.Application.get_path">get_path</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="gatt_application.CustomAdvertisement" href="#gatt_application.CustomAdvertisement">CustomAdvertisement</a></code></h4>
+</li>
+<li>
+<h4><code><a title="gatt_application.CustomApplication" href="#gatt_application.CustomApplication">CustomApplication</a></code></h4>
+</li>
+<li>
+<h4><code><a title="gatt_application.RxCharacteristic" href="#gatt_application.RxCharacteristic">RxCharacteristic</a></code></h4>
+<ul class="">
+<li><code><a title="gatt_application.RxCharacteristic.WriteValue" href="#gatt_application.RxCharacteristic.WriteValue">WriteValue</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="gatt_application.TxCharacteristic" href="#gatt_application.TxCharacteristic">TxCharacteristic</a></code></h4>
+<ul class="">
+<li><code><a title="gatt_application.TxCharacteristic.StartNotify" href="#gatt_application.TxCharacteristic.StartNotify">StartNotify</a></code></li>
+<li><code><a title="gatt_application.TxCharacteristic.StopNotify" href="#gatt_application.TxCharacteristic.StopNotify">StopNotify</a></code></li>
+<li><code><a title="gatt_application.TxCharacteristic.on_console_input" href="#gatt_application.TxCharacteristic.on_console_input">on_console_input</a></code></li>
+<li><code><a title="gatt_application.TxCharacteristic.send_tx" href="#gatt_application.TxCharacteristic.send_tx">send_tx</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="gatt_application.UartService" href="#gatt_application.UartService">UartService</a></code></h4>
+</li>
+</ul>
+</li>
+</ul>
+</nav>
+</main>
+<footer id="footer">
+<p>Generated by <a href="https://pdoc3.github.io/pdoc"><cite>pdoc</cite> 0.9.1</a>.</p>
+</footer>
+</body>
+</html>
