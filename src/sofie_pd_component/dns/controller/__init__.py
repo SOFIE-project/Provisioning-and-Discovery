@@ -26,7 +26,7 @@ from werkzeug.routing import BaseConverter, ValidationError
 from itsdangerous import base64_encode, base64_decode
 from bson.objectid import ObjectId
 
-from DP_component.dns.model import DB
+from sofie_pd_component.dns.model import DB
 
 app = Flask(__name__)
 # app.decimal_encoder = DecimalEncoder
@@ -67,4 +67,4 @@ def hello_world():
     return jsonify({"message": "Hello World!"})
 
 
-import DP_component.dns.controller.beacon_controller
+import sofie_pd_component.dns.controller.beacon_controller

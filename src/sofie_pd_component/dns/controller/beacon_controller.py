@@ -20,7 +20,7 @@
 from flask import jsonify, request
 from bson.objectid import ObjectId
 import json
-from DP_component.dns.model import DB
+from sofie_pd_component.dns.model import DB
 from . import bad_request_response, app
 
 import os

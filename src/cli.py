@@ -38,10 +38,10 @@ import subprocess
 import time
 import sys
 import json
-from DP_component.gatt_application import BLE
-from DP_component.eddystone_url import startUrlAdvertise, stopUrlAdvertise
-from DP_component.eddystone_uuid import startUuidAdvertise, stopUuidAdvertise
-from DP_component.dns import run
+from sofie_pd_component.gatt_application import BLE
+from sofie_pd_component.eddystone_url import startUrlAdvertise, stopUrlAdvertise
+from sofie_pd_component.eddystone_uuid import startUuidAdvertise, stopUuidAdvertise
+from sofie_pd_component.dns import run
 
 
 # VARIABLES FOR BLE
