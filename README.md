@@ -131,24 +131,24 @@ import DP_component
 
 To start eddystone URL
 ```
-eddystone.startUrlAdvertise(URL)
+eddystone_url.startUrlAdvertise(URL)
 ```
 
 To stop eddystone URL
 ```
-eddystone.stopUrlAdvertise()
+eddystone_url.stopUrlAdvertise()
 ```
 
 **For Eddystone UUID**
 
 To start eddystone UUID
 ```
-eddystone.startUuidAdvertise(NAMESPACE, INSTANCEID)
+eddystone_uuid.startUuidAdvertise(NAMESPACE, INSTANCEID)
 ```
 
 To stop eddystone UUID
 ```
-eddystone.stopUuidAdvertise()
+eddystone_uuid.stopUuidAdvertise()
 ```
 
 NAMESPACE: 10 byte unique ID to signify your company or organization 
