@@ -45,8 +45,13 @@ def add_space(string, length):
     """This method is used to format Unique ID into the Eddystone format."""
     return " ".join(string[i : i + length] for i in range(0, len(string), length))
 
+def change_type(vari):
+    if not isinstance(vari, str):
+        vari = vari.decode("utf-8")
+    return vari
 
-def startUuidAdvertise(NAMESPACE, INSTANCEID):
+
+def startUuidAdvertise(INTERFACE, TXPOWER, NAMESPACE, INSTANCEID):
     """
     This method is used to start the advertisement of eddystone url over bluetooth.
     
@@ -54,31 +59,35 @@ def startUuidAdvertise(NAMESPACE, INSTANCEID):
     :param string INSTANCEID: 6 byte instance ID to identify the device.
     
     """
+    
+    NAMESPACE = add_space(change_type(NAMESPACE), 2)
+    INSTANCEID = add_space(change_type(INSTANCEID), 2)
     print("Advertising: " + NAMESPACE + INSTANCEID)
-    namespace = add_space(NAMESPACE, 2)
-    instanceID = add_space(INSTANCEID, 2)
-    subprocess.call("sudo hciconfig hci0 up", shell=True, stdout=DEVNULL)
+    INTERFACE = change_type(INTERFACE)
+    TXPOWER = change_type(TXPOWER)
+    
+    subprocess.call("sudo hciconfig " + INTERFACE + " up", shell=True, stdout=DEVNULL)
     init = (
-        "sudo hcitool -i hci0 cmd 0x08 0x0008 1E 02 01 06 03 03 AA FE 15 16 AA FE 00 E7"
+        "sudo hcitool -i " + INTERFACE + " cmd 0x08 0x0008 1E 02 01 06 03 03 AA FE 15 16 AA FE 00 " + TXPOWER
     )
-    command = init + " " + namespace + " " + instanceID
+    finalCommand = init + " " + NAMESPACE + " " + INSTANCEID
     # Stop advertising
     subprocess.call(
-        "sudo hcitool -i hci0 cmd 0x08 0x000a 00", shell=True, stdout=DEVNULL
+        "sudo hcitool -i "+ INTERFACE + " cmd 0x08 0x000a 00", shell=True, stdout=DEVNULL
     )
     # Set advertising type
-    subprocess.call("sudo hciconfig -a hci0 leadv 3", shell=True, stdout=DEVNULL)
+    subprocess.call("sudo hciconfig -a " + INTERFACE + " leadv 3", shell=True, stdout=DEVNULL)
     # Set uuid
-    subprocess.call(command, shell=True, stdout=DEVNULL)
+    subprocess.call(finalCommand, shell=True, stdout=DEVNULL)
     # Resume advertising
     subprocess.call(
-        "sudo hcitool -i hci0 cmd 0x08 0x000a 01", shell=True, stdout=DEVNULL
+        "sudo hcitool -i " + INTERFACE +" cmd 0x08 0x000a 01", shell=True, stdout=DEVNULL
     )
 
 
-def stopUuidAdvertise():
+def stopUuidAdvertise(INTERFACE):
     """ This method gets called to stop the advertisement. """
     print("Stopping advertising")
     subprocess.call(
-        "sudo hcitool -i hci0 cmd 0x08 0x000a 00", shell=True, stdout=DEVNULL
+        "sudo hcitool -i "+ INTERFACE + " cmd 0x08 0x000a 00", shell=True, stdout=DEVNULL
     )
