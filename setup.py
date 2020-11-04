@@ -1,7 +1,7 @@
 from setuptools import setup, find_packages
 
 setup(
-    name='sofie_DPcomponent',
+    name='DP_component',
     version='0.1',
     description=(
         'Implementation of the SOFIE project\'s '

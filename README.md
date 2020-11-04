@@ -118,6 +118,46 @@ After starting the interface, there are limited options to perform
 
 **'exit'**: Exit the interface
 
+### Import the component
+
+```
+cd DP
+pip3 install
+python3
+import DP_component
+```
+
+**For Eddystone**
+
+To start eddystone URL
+```
+eddystone.startUrlAdvertise(URL)
+```
+
+To stop eddystone URL
+```
+eddystone.stopUrlAdvertise()
+```
+
+**For BLE Advertisement**
+
+```
+gatt_application.BLE(NAME, DEFAULT_SERVICEUUID, URI)
+```
+NAME: Device Name
+
+DEFAULT_SERVICEUUID: 0x180A (Read Only)
+
+URI: URL to advertise as 0x24 (Service Data)
+
+For more attributes: https://www.bluetooth.com/specifications/assigned-numbers/generic-access-profile/
+
+### Android Application
+
+Android application is used for the provisoning part of the component
+
+Please check [Android Application](/android_app/README.md)
+
 ***
 ## License
 

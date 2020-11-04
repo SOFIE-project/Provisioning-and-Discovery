@@ -1,3 +1,22 @@
+"""
+# Licensed to the Apache Software Foundation (ASF) under one or more
+# contributor license agreements.  See the NOTICE file distributed
+# with this work for additional information regarding copyright
+# ownership.  The ASF licenses this file to you under the Apache
+# License, Version 2.0 (the "License"); you may not use this file
+# except in compliance with the License.  You may obtain a copy of the
+# License at
+#
+#   http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or
+# implied.  See the License for the specific language governing
+# permissions and limitations under the License.
+
+"""
+
 import os
 import json
 import datetime
@@ -7,7 +26,7 @@ from werkzeug.routing import BaseConverter, ValidationError
 from itsdangerous import base64_encode, base64_decode
 from bson.objectid import ObjectId
 
-from python_app.model import DB
+from DP_component.dns.model import DB
 
 app = Flask(__name__)
 # app.decimal_encoder = DecimalEncoder
@@ -48,4 +67,4 @@ def hello_world():
     return jsonify({"message": "Hello World!"})
 
 
-import python_app.controller.beacon_controller
+import DP_component.dns.controller.beacon_controller

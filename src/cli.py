@@ -1,4 +1,23 @@
 """
+# Licensed to the Apache Software Foundation (ASF) under one or more
+# contributor license agreements.  See the NOTICE file distributed
+# with this work for additional information regarding copyright
+# ownership.  The ASF licenses this file to you under the Apache
+# License, Version 2.0 (the "License"); you may not use this file
+# except in compliance with the License.  You may obtain a copy of the
+# License at
+#
+#   http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or
+# implied.  See the License for the specific language governing
+# permissions and limitations under the License.
+
+"""
+
+"""
 Command Line Interface
 
 This is the custom command line interface to work with Discovery and Provisioning component.
@@ -19,22 +38,15 @@ import subprocess
 import time
 import sys
 import json
-
-# FOR BLE ADVERTISEMENT
-from gatt_application import BLE
-
-# FOR EDDYSTONE URL
-import eddystone_url
-
-# FOR EDDYSTONE UUID
-import eddystone_uuid
-
-# FOR DNS-SD
-from python_app import run
+from DP_component.gatt_application import BLE
+from DP_component.eddystone_url import startAdvertise, stopAdvertise
+from DP_component.eddystone_uuid import startAdvertise, stopAdvertise
+from DP_component.dns import run
 
 
 # VARIABLES FOR BLE
-URL = "//goo.gl/SkcDTN"
+#Change URL to point semantic file 
+URL = "//bit.ly/37IIuLj"
 NAME = "DPP"
 DEFAULT_SERVICEUUID = "180A"
 
