@@ -39,8 +39,8 @@ import time
 import sys
 import json
 from DP_component.gatt_application import BLE
-from DP_component.eddystone_url import startAdvertise, stopAdvertise
-from DP_component.eddystone_uuid import startAdvertise, stopAdvertise
+from DP_component.eddystone_url import startUrlAdvertise, stopUrlAdvertise
+from DP_component.eddystone_uuid import startUuidAdvertise, stopUuidAdvertise
 from DP_component.dns import run
 
 
@@ -109,7 +109,7 @@ def main():
                 NAMESPACE = UUID[:10]
                 INSTANCEID = UUID[10:]
                 subprocess.call(["sudo", "-v"])
-                eddystone_uuid.startAdvertise(NAMESPACE, INSTANCEID)
+                startUuidAdvertise(NAMESPACE, INSTANCEID)
 
         elif cmd == "eddystone":
             subprocess.call(["sudo", "-v"])
@@ -117,9 +117,9 @@ def main():
                 print("Needs 1 parameter atleast")
                 continue
             elif keywords[1] == "start":
-                eddystone_url.startAdvertise("http:" + URL)
+                startUrlAdvertise("http:" + URL)
             elif keywords[1] == "stop":
-                eddystone_url.stopAdvertise()
+                stopUrlAdvertise()
 
         elif cmd == "help":
             print_help()
