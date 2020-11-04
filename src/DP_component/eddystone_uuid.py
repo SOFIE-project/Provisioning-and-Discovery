@@ -46,7 +46,7 @@ def add_space(string, length):
     return " ".join(string[i : i + length] for i in range(0, len(string), length))
 
 
-def startAdvertise(NAMESPACE, INSTANCEID):
+def startUuidAdvertise(NAMESPACE, INSTANCEID):
     """
     This method is used to start the advertisement of eddystone url over bluetooth.
     
@@ -76,7 +76,7 @@ def startAdvertise(NAMESPACE, INSTANCEID):
     )
 
 
-def stopAdvertise():
+def stopUuidAdvertise():
     """ This method gets called to stop the advertisement. """
     print("Stopping advertising")
     subprocess.call(

@@ -117,7 +117,7 @@ def encodeMessage(url):
     return message
 
 
-def startAdvertise(url):
+def startUrlAdvertise(url):
     """
     This method is used to start the advertisement of eddystone url over bluetooth.
     
@@ -150,7 +150,7 @@ def startAdvertise(url):
     )
 
 
-def stopAdvertise():
+def stopUrlAdvertise():
     """ This method gets called to stop the advertisement. """
     print("Stopping advertising")
     subprocess.call(

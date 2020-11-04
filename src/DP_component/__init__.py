@@ -18,6 +18,6 @@
 """
 
 
-from .eddystone_url import startAdvertise, stopAdvertise
-from .eddystone_uuid import startAdvertise, stopAdvertise
+from .eddystone_url import startUrlAdvertise, stopUrlAdvertise
+from .eddystone_uuid import startUuidAdvertise, stopUuidAdvertise
 from .dns import run
