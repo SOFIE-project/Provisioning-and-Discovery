@@ -127,7 +127,7 @@ python3
 import DP_component
 ```
 
-**For Eddystone**
+**For Eddystone URL**
 
 To start eddystone URL
 ```
@@ -138,6 +138,22 @@ To stop eddystone URL
 ```
 eddystone.stopUrlAdvertise()
 ```
+
+**For Eddystone UUID**
+
+To start eddystone UUID
+```
+eddystone.startUuidAdvertise(NAMESPACE, INSTANCEID)
+```
+
+To stop eddystone UUID
+```
+eddystone.stopUuidAdvertise()
+```
+
+NAMESPACE: 10 byte unique ID to signify your company or organization 
+
+INSTANCEID: 6 byte instance ID to identify the device.
 
 **For BLE Advertisement**
 
