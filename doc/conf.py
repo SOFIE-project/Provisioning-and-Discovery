@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 #
-# SOFIE Interledger documentation build configuration file, created by
+# SOFIE P&D documentation build configuration file, created by
 # sphinx-quickstart on Mon Aug 19 10:21:25 2019.
 #
 # This file is execfile()d with the current directory set to its

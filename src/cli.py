@@ -109,7 +109,7 @@ def main():
                 NAMESPACE = UUID[:10]
                 INSTANCEID = UUID[10:]
                 subprocess.call(["sudo", "-v"])
-                startUuidAdvertise(NAMESPACE, INSTANCEID)
+                startUuidAdvertise('hci0', bytes.fromhex('E7') ,NAMESPACE, INSTANCEID)
 
         elif cmd == "eddystone":
             subprocess.call(["sudo", "-v"])

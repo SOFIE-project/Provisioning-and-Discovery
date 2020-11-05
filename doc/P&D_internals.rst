@@ -44,7 +44,7 @@ DNS-SD Interface
 *Figure 1: Sequence diagram of the DNS-SD discovery*
 
 ---------------------------------------------------
-Extending Interledger to Support Additional Ledgers
+Extending P&D to Support Additional Protocols
 ---------------------------------------------------
 
 Extending the P&D component to support additional Protocols is straightforward: simply create new python classes implementing the ``Discovery`` interface  in the root folder, and add it to the Command Line Interface `file`.

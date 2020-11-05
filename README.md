@@ -16,13 +16,30 @@
 
 ## Description
 
-SOFIE discovery and provisioning component is to enable the discovery of new IoT resources and their related metadata. Using this functionality, it is possible to decentralise the process of making new resources available to systems utilising the SOFIE framework and to automate the negotiations for the terms of use and the compensation for the use of these resources. As an example, a location-based game can discover new IoT devices usable for expanding the game world and automatically add them to the resource database, if the resources are accompanied with the necessary metadata including the licence for using the device and the terms of compensation. 
+The goal of SOFIE provisioning and discovery component is to provision the IoT device to a working state with the platform and to enable the discovery of new IoT resources along with their related metadata. Using this functionality, it is possible to decentralise the process of making new resources available to systems utilising the SOFIE framework. This component works along with SOFIE semantic representation component to provide meta-data for the IoT devices. Examples of how P&D component can be utilised include:
+
+- [IoT Beacon discovery and provisioning](/doc/example-game.md) example discover new IoT devices usable for expanding the game world and automatically add them to the resource database, the provisioning interface updates the IoT device with required configurations to work with the platform.  
+
+- [SMOG Locker](/doc/import_component.md) example uses discovery interface to advertise specific Unique ID to discover locker nearby.
 
 
 ### Architecture Overview
 
 ![High Level Architecture](/imgs/archi.png)
 
+Figure 1: High Level Architecture of the Component
+
+The first functionality of the component is to provision the devices using the meta-data.  The process of provisioning involves enrolling a device into the system and getting each device configured to provide a required service and send data to the right place on the network. The first part is establishing the initial connection between the device and the IoT solution by registering the device. In the component, Provisioning interface goes through the meta-data and checks against the requirement before provisioning the device to the database. This also acts as the filter for either accepting or rejecting the newly discovered IoT resource. After enrolling the device, the interface provides for the configuration related information for the device to bring it to a working state, and also includes defining the desired state of the device. 
+
+The second functionality of the component is discovery of the new IoT resources. This component interface provides operations to perform a scan and discover open IoT devices nearby. It also provides an interface to discover devices published on the local (WLAN, etc.) network. The discovery interface lists newly discovered devices along with their related meta-data before enrolling them the system.
+
+### Main Concepts
+
+The design of the architecture is driven by the discvoery scenario of the SOFIE Gaming Pilot.
+
+![Internals](/imgs/discovery_internal.png)
+
+Figure 2: Internals of the Component
 
 **Bluetooth Low Energy (BLE) with Custom Advertisement and Services**
 
@@ -55,14 +72,11 @@ DNS service discovery (DNS-SD) allows clients to discover a named list of servic
 
 The discovery and provisiong component works with semantic representation file, it may be used by other SOFIE components and applications as necessary.
 
-### Main Concepts
-
-The design of the architecture is driven by the discvoery scenario of the SOFIE Gaming Pilot. 
-
+Only Mobile gaming pilot utilise the P&D component for discovering and managing the new IoT devices to be used inside the game world. 
 
 ### Key Technologies
 
-The software modules are implemented in **Python 3** 
+The software modules are implemented in **Python 3** Currently the component supports the Eddystone and custom GATT application over **Bluetooth Low Energy** (BLE) and **DNS-Service Discovery**.
 
 ***
 
@@ -72,25 +86,26 @@ The `/src` directory contains the code implementing the python application.
 
 The `/_webthing.servie`is a template file for DNS-SD custom service.
 
-The `/src/python_app/controller/static/semantic.json` is a template file for semantic representation
+The `/src/sofie_pd_component/dns/controller/static/semantic.json` is a template file for semantic representation
 
 
 ### Prerequisites
 
 Software modules: **Python 3.6**.
 
-Hardware module: Raspberry Pi 
+Hardware module: **Raspberry Pi with BLE module**
 
 
 ### Installation
 
-```bash
-#To install DNS-SD 
-sudo apt-get install avahi-daemon 
+Install Avahi daemon 
+```
+sudo apt-get install avahi-daemon
+```
 
-# Install python app project dependencies
-cd python_app
-python setup.py install 
+Install python app project dependencies
+```
+python3 setup.py install 
 ```
 
 ### Execution
@@ -100,8 +115,8 @@ Before starting DNS-SD, create a DNS service file and copy to `/etc/avahi/servic
 Before starting the server, create a semantic representaion file and copy to `src/python_app/controller/static`
 
 To start the Command Line Interface
-```bash
-cd DP/src
+```
+cd Discovery-and-Provisioning/src
 python3 cli.py
 ```
 Change the URL in the cli file to point the Semantic Representation file.
@@ -121,52 +136,12 @@ After starting the interface, there are limited options to perform
 ### Import the component
 
 ```
-cd DP
+cd Discovery-and-Provisioning
 pip3 install
 python3
 import DP_component
 ```
-
-**For Eddystone URL**
-
-To start eddystone URL
-```
-eddystone_url.startUrlAdvertise(URL)
-```
-
-To stop eddystone URL
-```
-eddystone_url.stopUrlAdvertise()
-```
-
-**For Eddystone UUID**
-
-To start eddystone UUID
-```
-eddystone_uuid.startUuidAdvertise(NAMESPACE, INSTANCEID)
-```
-
-To stop eddystone UUID
-```
-eddystone_uuid.stopUuidAdvertise()
-```
-
-NAMESPACE: 10 byte unique ID to signify your company or organization 
-
-INSTANCEID: 6 byte instance ID to identify the device.
-
-**For BLE Advertisement**
-
-```
-gatt_application.BLE(NAME, DEFAULT_SERVICEUUID, URI)
-```
-NAME: Device Name
-
-DEFAULT_SERVICEUUID: 0x180A (Read Only)
-
-URI: URL to advertise as 0x24 (Service Data)
-
-For more attributes: https://www.bluetooth.com/specifications/assigned-numbers/generic-access-profile/
+For more details [Link](/doc/import_component.md)
 
 ### Android Application
 
