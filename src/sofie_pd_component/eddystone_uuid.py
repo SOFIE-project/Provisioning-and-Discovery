@@ -75,7 +75,6 @@ def startUuidAdvertise(INTERFACE = 'hci0', TXPOWER = bytes.fromhex('E7') ,
     subprocess.call("sudo hciconfig -a " + INTERFACE + " leadv 3", shell=True, stdout=DEVNULL)
     # Set uuid
     subprocess.call(finalCommand, shell=True, stdout=DEVNULL)
-    print(finalCommand)
     # Resume advertising
     subprocess.call(
         "sudo hcitool -i " + INTERFACE +" cmd 0x08 0x000a 01", shell=True, stdout=DEVNULL
