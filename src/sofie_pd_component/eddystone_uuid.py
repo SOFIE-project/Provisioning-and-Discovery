@@ -47,7 +47,7 @@ def add_space(string, length):
 
 def change_type(vari):
     if not isinstance(vari, str):
-        vari = vari.decode("utf-8")
+        vari = vari.hex()
     return vari
 
 
