@@ -20,7 +20,7 @@ The goal of SOFIE provisioning and discovery component is to provision the IoT d
 
 Examples of how P&D component can be utilised include:
 
-- [IoT Beacon discovery and provisioning](/doc/example-game.md) example discover new IoT devices usable for expanding the game world and automatically add them to the resource database, the provisioning interface updates the IoT device with required configurations to work with the platform.  
+- [IoT Beacon discovery and provisioning](/doc/example-game.md) example discovers new IoT devices usable for expanding the game world and automatically adds them to the resource database, while the provisioning interface updates the IoT device with required configurations to work with the platform.  
 
 - [SMOG Locker](/doc/import_component.md) example uses discovery interface to advertise specific Unique ID to discover locker nearby.
 
