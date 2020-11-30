@@ -1,17 +1,19 @@
-# SOFIE Discovery and Provisiong component
+# SOFIE Provisiong and Discovery component
 
 **Table of contents:**
 
 - [Description](#description)
     - [Architecture Overview](#architecture-overview)
-    - [Main Concepts](#main-concepts)
     - [Relation with SOFIE](#relation-with-sofie)
     - [Key Technologies](#key-technologies)
 
 - [Usage](#usage)
     - [Prerequisites](#prerequisites)
     - [Installation](#installation)
+    - [Configration](#configration)
     - [Execution](#execution)
+- [Contact Info](#Contact)
+- [License](#License)
 
 
 ## Description
@@ -22,7 +24,7 @@ Examples of how P&D component can be utilised include:
 
 - [IoT Beacon discovery and provisioning](/doc/example-game.md) example discovers new IoT devices usable for expanding the game world and automatically adds them to the resource database, while the provisioning interface updates the IoT device with required configurations to work with the platform.  
 
-- [SMOG Locker](/doc/import_component.md) example uses discovery interface to advertise specific Unique ID to discover locker nearby.
+- [SMAUG Locker](/doc/import_component.md) example uses discovery interface to advertise specific Unique ID to discover locker nearby.
 
 
 ### Architecture Overview
@@ -31,17 +33,22 @@ Examples of how P&D component can be utilised include:
 
 Figure 1: High Level Architecture of the Component
 
-The first functionality of the component is to provision the devices using the meta-data.  The process of provisioning involves enrolling a device into the system and getting each device configured to provide a required service and send data to the right place on the network. The first part is establishing the initial connection between the device and the IoT solution by registering the device. In the component, Provisioning interface goes through the meta-data and checks against the requirement before provisioning the device to the database. This also acts as the filter for either accepting or rejecting the newly discovered IoT resource. After enrolling the device, the interface provides for the configuration related information for the device to bring it to a working state, and also includes defining the desired state of the device. 
+The first functionality of the component is to provision the devices using meta-data provided by the SOFIE semantic represenation file.  The process of provisioning involves enrolling a device into the system and getting each device configured to provide a required service and send data to the right place on the network. In the component, Provisioning interface goes through the meta-data and checks against the requirement before provisioning the device to the database. This also acts as the filter for either accepting or rejecting the newly discovered IoT resource. After enrolling the device, the interface provides for the configuration related information for the device to bring it to a working state, and also includes defining the desired state of the device. 
 
 The second functionality of the component is discovery of the new IoT resources. This component interface provides operations to perform a scan and discover open IoT devices nearby. It also provides an interface to discover devices published on the local (WLAN, etc.) network. The discovery interface lists newly discovered devices along with their related meta-data before enrolling them the system.
 
-### Main Concepts
+![Internals](/imgs/usage.png)
+Figure 2: Usage of the Component
+
+As shown in the Figure 2, the user [configres](#configration) the semantic file for the IoT device (Raspberry Pi for prototype) and host it on the server. The user starts the SOFIE Provisiong and Discovery componenet on the device. After starting the component, the user installs the mobile client [application](/android_app/README.md). User is shown multiple options to choose from that relates to the discovery protocols. The mobile client scans for the nearby IoT devices based on the protocol selected. In order to filter the newly discovered IoT devices, we use custom advertisement packages with URI link to the semantic representation file. After discvoering, the mobile client downloads the semantics file that contains the meta-data for the IoT device and goes through the file. The metadata from the file is checked against the requirement provided by the user before provisioning the device to the database. If the devices pass the minimum requirement, the connection between the mobile and the IoT device is established and the device is configurated to work with the platform.
 
 The design of the architecture is driven by the discvoery scenario of the SOFIE Gaming Pilot.
 
 ![Internals](/imgs/discovery_internal.png)
 
-Figure 2: Internals of the Component
+Figure 3: Internals of the Component
+
+As shown in the Figure 3, the component uses modified Bluetooth with custom advertisement and DNS for discovering the IoT device. The details of the protocol are following:
 
 **Bluetooth Low Energy (BLE) with Custom Advertisement and Services**
 
@@ -84,11 +91,11 @@ The software modules are implemented in **Python 3** Currently the component sup
 
 ## Usage
 
-The `/src` directory contains the code implementing the python application.
+[Src](/src) directory contains the code implementing the python application.
 
-The `/_webthing.servie`is a template file for DNS-SD custom service.
+[Service file](/_webthing.servie)is a template file for DNS-SD custom service.
 
-The `/src/sofie_pd_component/dns/controller/static/semantic.json` is a template file for semantic representation
+[Semantics File](/src/sofie_pd_component/dns/controller/static/semantic.json) is a template file for semantic representation that contains the metadata of the IoT device.
 
 
 ### Prerequisites
@@ -110,19 +117,34 @@ Install python app project dependencies
 python3 setup.py install 
 ```
 
+### Configration
+
+Before starting, 
+
+Create a DNS [Service file](/_webthing.service) and copy it to Avahi directory.
+
+```
+cd Discovery-and-Provisioning
+cp [Link to File] /etc/avahi/service/
+```
+
+**For DNS**
+Create a [semantic representaion file](/src/sofie_pd_component/dns/controller/static/semantic.json) and copy it to internal directory.
+
+```
+cp [Link to File] src/python_app/controller/static
+```
+
+**For BLE**
+Upload the semantic file to a server and change the URL in the cli [file](/src/cli.py)
+
 ### Execution
-
-Before starting DNS-SD, create a DNS service file and copy to `/etc/avahi/service/`
-
-Before starting the server, create a semantic representaion file and copy to `src/python_app/controller/static`
 
 To start the Command Line Interface
 ```
-cd Discovery-and-Provisioning/src
+cd src
 python3 cli.py
 ```
-Change the URL in the cli file to point the Semantic Representation file.
-
 After starting the interface, there are limited options to perform
 
 **'dns'**: Start the DNS-SD
