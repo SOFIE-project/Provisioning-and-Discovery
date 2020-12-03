@@ -11,6 +11,9 @@
     - [Installation](#installation)
     - [Configration](#configration)
     - [Execution](#execution)
+- [Testing](#testing)
+    - [Running the Test](#Running-the-Tests)
+    - [Evaluating Results](#Evaluating-Results)
 - [Open Issues](#Open-Issues)
 - [Future Work](#future-work)
 - [Release Notes](#release-note)
@@ -142,7 +145,7 @@ Upload the semantic file to a server and change the URL in the cli [file](/src/c
 
 ### Execution
 
-To start the Command Line Interface
+Start the Command Line Interface and use following commands
 ```
 cd src
 python3 cli.py
@@ -161,6 +164,8 @@ After starting the interface, there are limited options to perform
 
 ### Import the component
 
+To import the component
+
 ```
 cd Discovery-and-Provisioning
 pip3 install
@@ -174,6 +179,23 @@ For more details [Link](/doc/import_component.md)
 Android application is used for the provisoning part of the component
 
 Please check [Android Application](/android_app/README.md)
+
+## Testing
+
+The `tests/` directory contains the script to test the software modules of the component. The test check that all the discovery protocols works.
+
+### Running the Tests
+
+To test the component, use CLI 
+```
+cd Discovery-and-Provisioning
+pip3 install
+python3 tests/test_run.py
+```
+
+### Evaluating Results
+
+The user can evaluate the status of the component by running the tests. If all of them are passed then the component should run as intended on the Raspberry Pi.
 
 ## Open Issues
 
