@@ -150,7 +150,7 @@ Start the Command Line Interface and use following commands
 cd src
 python3 cli.py
 ```
-After starting the interface, there are limited options to perform
+After starting the interface, the following options are availiable to perform
 
 **'dns'**: Start the DNS-SD
 
