@@ -12,6 +12,8 @@
     - [Installation](#installation)
     - [Configration](#configration)
     - [Execution](#execution)
+- [Future Work](#future-work)
+- [Release Notes](#release-note)
 - [Contact Info](#Contact)
 - [License](#License)
 
@@ -173,7 +175,28 @@ Android application is used for the provisoning part of the component
 
 Please check [Android Application](/android_app/README.md)
 
-***
+
+## Future Work
+
+The component satisfy SOFIE project requirements and there is no plan to extend functionalities.
+
+## Release  Note
+
+### 2020-12-02
+#### Added
+- Mobile client added for provisioning of devices.
+- Testing and validation of the component.
+- Updated documentation.
+
+### 2020-11-17
+#### Added
+- Updated documentation
+- Example of importing the [component](/doc/import_component.md)
+
+## Contact Info
+
+**Contact** Ahsan Manzoor: ahsan.manzoor@rovio.com
+
 ## License
 
 This component is licensed under the Apache License 2.0.
