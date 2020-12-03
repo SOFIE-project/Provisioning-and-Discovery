@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">SOFIE_DP</string>
+    <string name="action_settings">Settings</string>
+    <string name="title_activity_ble">Ble</string>
+    <string name="title_activity_eddystone">eddystone</string>
+    <string name="title_activity_dns">DNS</string>
+</resources>
