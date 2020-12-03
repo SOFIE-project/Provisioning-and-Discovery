@@ -11,6 +11,7 @@
     - [Installation](#installation)
     - [Configration](#configration)
     - [Execution](#execution)
+- [Open Issues](#Open-Issues)
 - [Future Work](#future-work)
 - [Release Notes](#release-note)
 - [Contact Info](#Contact)
@@ -174,6 +175,9 @@ Android application is used for the provisoning part of the component
 
 Please check [Android Application](/android_app/README.md)
 
+## Open Issues
+
+The component, in the current state there is no major bug or missing functionality.
 
 ## Future Work
 
