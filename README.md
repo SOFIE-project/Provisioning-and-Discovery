@@ -38,9 +38,9 @@ Examples of how P&D component can be utilised include:
 
 Figure 1: High Level Architecture of the Component
 
-The first functionality of the component is to provision the devices using meta-data provided by the SOFIE semantic represenation file.  The process of provisioning involves enrolling a device into the system and getting each device configured to provide a required service and send data to the right place on the network. In the component, Provisioning interface goes through the meta-data and checks against the requirement before provisioning the device to the database. This also acts as the filter for either accepting or rejecting the newly discovered IoT resource. After enrolling the device, the interface provides for the configuration related information for the device to bring it to a working state, and also includes defining the desired state of the device. 
+The first functionality of the component is to provision the devices using meta-data provided by the SOFIE semantic represenation file.  The process of provisioning involves enrolling a device into the system and getting each device configured to provide a required service and send data to the right place on the network. In the component, Provisioning interface goes through the meta-data and checks against the requirement before provisioning the device to the database. This also acts as the filter for either accepting or rejecting the newly discovered IoT resource. After enrolling the device, the provisioning interface provides  the configuration for the device to bring it to a working state with the deployed platform.
 
-The second functionality of the component is discovery of the new IoT resources. This component interface provides operations to perform a scan and discover open IoT devices nearby. It also provides an interface to discover devices published on the local (WLAN, etc.) network. The discovery interface lists newly discovered devices along with their related meta-data before enrolling them the system.
+The second functionality of the component is the discovery of the new IoT resources. The Bluetooth discovery interface provides operations to perform a BLE scan and discover open IoT devices nearby using Bluetooth. It also provides a LAN discovery interface to discover devices published on the local (WLAN, etc.) network. The interfaces list newly discovered devices along with their related meta-data before enrolling them the system.
 
 ![Internals](/imgs/usage.png)
 Figure 2: Usage of the Component
@@ -53,7 +53,18 @@ The design of the architecture is driven by the discvoery scenario of the SOFIE 
 
 Figure 3: Internals of the Component
 
-As shown in the Figure 3, the component uses modified Bluetooth with custom advertisement and DNS for discovering the IoT device. The details of the protocol are following:
+As shown in Figure 3, the component uses modified Bluetooth with a custom Gatt server and DNS for discovering the IoT device. The mobile client downloads the semantic representation file of the IoT device and checks for provisioning requirements before saving it to the database. The mobile application also sends configuration to the IoT device to work along with the platform.
+
+
+### Relation with SOFIE
+
+The discovery and provisiong component works with semantic representation file, it may be used by other SOFIE components and applications as necessary.
+
+Only Mobile gaming pilot utilise the P&D component for discovering and managing the new IoT devices to be used inside the game world. 
+
+### Key Technologies
+
+The software modules are implemented in **Python 3** Currently the component supports the Eddystone and custom GATT application over **Bluetooth Low Energy** (BLE) and **DNS-Service Discovery**. The details of the technologies used are as following:
 
 **Bluetooth Low Energy (BLE) with Custom Advertisement and Services**
 
@@ -81,16 +92,6 @@ Once decoded, the URL can be used by any client with access to the internet. In 
 **DNS Service Discovery with multicast**
 
 DNS service discovery (DNS-SD) allows clients to discover a named list of service instances, given a service type, and to resolve those services to hostnames using standard DNS queries. It discovers devices and services on a local area network using IP protocols, without requiring the user to configure them manually. DNS service discovery requests can also be sent over a multicast link, and it can be combined with multicast-DNS (mDNS) to yield zero-configuration DNS-SD.
-
-### Relation with SOFIE
-
-The discovery and provisiong component works with semantic representation file, it may be used by other SOFIE components and applications as necessary.
-
-Only Mobile gaming pilot utilise the P&D component for discovering and managing the new IoT devices to be used inside the game world. 
-
-### Key Technologies
-
-The software modules are implemented in **Python 3** Currently the component supports the Eddystone and custom GATT application over **Bluetooth Low Energy** (BLE) and **DNS-Service Discovery**.
 
 ***
 
