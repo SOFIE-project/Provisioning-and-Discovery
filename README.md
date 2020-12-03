@@ -6,7 +6,6 @@
     - [Architecture Overview](#architecture-overview)
     - [Relation with SOFIE](#relation-with-sofie)
     - [Key Technologies](#key-technologies)
-
 - [Usage](#usage)
     - [Prerequisites](#prerequisites)
     - [Installation](#installation)
