@@ -200,11 +200,11 @@ The user can evaluate the status of the component by running the tests. If all o
 
 ## Open Issues
 
-The component, in the current state there is no major bug or missing functionality.
+There are no major bugs or missing functionalities.
 
 ## Future Work
 
-The component satisfy SOFIE project requirements and there is no plan to extend functionalities.
+The component satisfies SOFIE project requirements and there is no plan to extend functionalities.
 
 ## Release  Note
 
