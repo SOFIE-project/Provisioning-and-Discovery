@@ -23,11 +23,11 @@
 
 ## Description
 
-The goal of SOFIE provisioning and discovery component is 1) to provision the IoT device to a working state with the platform and 2) to enable the discovery of new IoT resources along with their related metadata. Using this functionality, it is possible to decentralise the process of making new resources available to systems utilising the SOFIE framework. This component works along with SOFIE semantic representation component to provide meta-data for the IoT devices. 
+The goal of SOFIE provisioning and discovery component is 1) to provision the IoT device to a working state with the IoT platform and 2) to enable the discovery of new IoT resources along with their related metadata. Using this functionality, it is possible to decentralise the process of making new resources available to systems utilising the SOFIE framework. This component works along with SOFIE [Semantic Representation](https://github.com/SOFIE-project/Semantic-Representation) component to provide meta-data for the IoT devices. 
 
 Examples of how P&D component can be utilised include:
 
-- [IoT Beacon discovery and provisioning](/doc/example-game.md) example discovers new IoT devices usable for expanding the game world and automatically adds them to the resource database, while the provisioning interface updates the IoT device with required configurations to work with the platform.  
+- [IoT Beacon discovery and provisioning](/doc/example-game.md) example discovers new IoT devices usable for expanding the game world and automatically adds them to the resource database, while the provisioning interface updates the IoT device with required configurations to work with the Mobile gaming pilot.  
 
 - [SMAUG Locker](/doc/import_component.md) example uses discovery interface to advertise specific Unique ID to discover locker nearby.
 
@@ -38,22 +38,22 @@ Examples of how P&D component can be utilised include:
 
 Figure 1: High Level Architecture of the Component
 
-The first functionality of the component is to provision the devices using meta-data provided by the SOFIE semantic representation file. The process of provisioning involves enrolling a device into the system and getting each device configured to provide a required service and send data to the right place on the network. In the component, the Provisioning interface goes through the meta-data and checks against the requirement before provisioning the device to the database. This also acts as the filter for either accepting or rejecting the newly discovered IoT resource. After enrolling the device, the provisioning interface provides the configuration for the device to bring it to a working state with the deployed platform.
+The first functionality of the component is to provision the devices using meta-data provided by the SOFIE [Semantic Representation](https://github.com/SOFIE-project/Semantic-Representation). The process of provisioning involves enrolling a device into the system and getting each device configured to provide a required service and send data to the right place on the network. In the component, the Provisioning interface goes through the meta-data and checks against the requirements before provisioning the device to the database. This also acts as the filter for either accepting or rejecting the newly discovered IoT resource. After enrolling the device, the provisioning interface provides the configuration for the device to bring it to a working state with the deployed IoT platform.
 
-The second functionality of the component is the discovery of the new IoT resources. The Bluetooth discovery interface provides operations to perform a BLE scan and discover open IoT devices nearby using Bluetooth. It also provides a LAN discovery interface to discover devices published on the local (WLAN, etc.) network. The interfaces list newly discovered devices along with their related meta-data before enrolling them in the system.
+The second functionality of the component is the discovery of the new IoT resources. The Bluetooth discovery interface provides operations to perform a BLE scan to discover open IoT devices nearby using Bluetooth. It also provides a LAN discovery interface to discover devices published on the local (WLAN, etc.) network. The interfaces list newly discovered devices along with their related meta-data before enrolling them in the system.
 
 ![Internals](/imgs/usage.png)
 Figure 2: Usage of the Component
 
-As shown in Figure 2, the user [configres](#configration) the semantic file for the IoT device (Raspberry Pi for prototype) and host it on the server. The user starts the SOFIE Provisioning and Discovery component on the device. After starting the component, the user installs the mobile client [application](/android_app/README.md). User is shown multiple options to choose from that relates to the discovery protocols. The mobile client scans for the nearby IoT devices based on the protocol selected. In order to filter the newly discovered IoT devices, we use custom advertisement packages with URI link to the semantic representation file. After discovering, the mobile client downloads the semantics file that contains the meta-data for the IoT device and goes through the file. The metadata from the file is checked against the requirement provided by the user before provisioning the device to the database. If the devices pass the minimum requirement, the connection between the mobile and the IoT device is established and the device is configurated to work with the platform.
+As shown in Figure 2, the user [configures](#configration) the semantic file for the IoT device (Raspberry Pi for prototype) and host it on the server. The user starts the SOFIE Provisioning and Discovery component on the device. After starting the component, the user installs the mobile client [application](/android_app/README.md). User is shown multiple options that relates to the discovery protocols. The mobile client scans for the nearby IoT devices based on the protocol selected. In order to filter the newly discovered IoT devices, a custom advertisement packages with URI link to the semantic representation file. After discovering, the mobile client downloads the semantics file that contains the meta-data for the IoT device and goes through the file. The metadata from the file is checked against the requirements provided by the user before provisioning the device to the database. If the device pass the minimum requirement, the connection between the mobile and the IoT device is established and the device is configurated to work with the IoT platform.
 
-The design of the architecture is driven by the discvoery scenario of the SOFIE Gaming Pilot.
+The design of the architecture was driven by the discvoery scenario of the SOFIE Mobile Gaming Pilot.
 
 ![Internals](/imgs/discovery_internal.png)
 
 Figure 3: Internals of the Component
 
-As shown in Figure 3, the component uses modified Bluetooth with a custom Gatt server and DNS for discovering the IoT device. The mobile client downloads the semantic representation file of the IoT device and checks for provisioning requirements before saving it to the database. The mobile application also sends configuration to the IoT device to work along with the platform.
+As shown in Figure 3, the component uses modified Bluetooth with a custom Gatt server and DNS for discovering the IoT device. The mobile client downloads the semantic representation file of the IoT device and checks for provisioning requirements before saving it to the database. The mobile application also sends configuration to the IoT device to work with the IoT platform.
 
 
 ### Relation with SOFIE
@@ -81,13 +81,13 @@ This is the device that exposes the data it controls or contains. In this Scenar
 *Client*
 This is the device that interfaces with the server with the purpose of reading the exposed data and/or controlling the server’s behavior. In this example, a mobile device that connects to the Raspberry PI sends commands and requests to it and accepts incoming notifications and indications.
 
-When a BLE device is advertising it will periodically transmit packets contains information such as device name, Bluetooth address of the sender, etc. The advertising data fields can be used to configure a custom advertising packet. The advertising packet in this example already contains your custom name, service UUIDs and custom data i.e. URL. It also contains flags defining some of the advertising options. It is important to know that an advertising packet can consist of no more than 31 bytes.
+When a BLE device is advertising it will periodically transmit packets containing information such as device name, Bluetooth address of the sender, etc. The advertising data fields can be used to configure a custom advertising packet. The advertising packet in this example already contains the custom name, service UUIDs and custom data i.e. URL. It also contains flags defining some of the advertising options. It is important to know that an advertising packet can contain of no more than 31 bytes.
 
 **Eddystone URL**
 
-Eddystone is an open beacon format developed by Google and designed with transparency and robustness in mind. Eddystone can be detected by both Android and iOS devices. Several different types of the payload can be included in the frame format. The Eddystone-URL frame broadcasts a URL using a compressed encoding format in order to fit more within the limited advertisement packet.
+Eddystone is an open beacon format developed by Google and designed with transparency and robustness in mind. Eddystone can be detected by both Android and iOS devices. Several different types of the payloads can be included in the frame format. The Eddystone-URL frame broadcasts a URL using a compressed encoding format in order to fit more within the limited advertisement packet.
 
-Once decoded, the URL can be used by any client with access to the internet. In this example, an Eddystone-URL is used to broadcast the URL of the Semantic Representation file, then any client that received this packet could download the Semantics file of the device.
+Once decoded, the URL can be used by any client with access to the internet. In this example, an Eddystone-URL is used to broadcast the URL of the Semantic Representation file, then any client that received this packet can download the Semantics file of the device.
 
 **DNS Service Discovery with multicast**
 
@@ -106,9 +106,9 @@ DNS service discovery (DNS-SD) allows clients to discover a named list of servic
 
 ### Prerequisites
 
-Software modules: **Python 3.6**.
+Software modules: **Python 3.6 and Unix-like OS**.
 
-Hardware module: **Raspberry Pi with BLE module**
+Hardware module: **Bluetooth module**
 
 
 ### Installation
@@ -204,7 +204,7 @@ There are no major bugs or missing functionalities.
 
 ## Future Work
 
-The component satisfies SOFIE project requirements and there is no plan to extend functionalities.
+Currently, no future work is planned.
 
 ## Release  Note
 
