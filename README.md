@@ -1,4 +1,4 @@
-# SOFIE Provisiong and Discovery component
+# SOFIE Provisioning and Discovery component
 
 **Table of contents:**
 
@@ -27,7 +27,7 @@ This is the Provisioning and Discovery component of the [SOFIE Framework](https:
 
 Examples of how P&D component can be utilised include:
 
-- [IoT Beacon discovery and provisioning](/doc/example-game.md) example discovers new IoT devices usable for expanding the game world and automatically adds them to the resource database, while the provisioning interface updates the IoT device with required configurations to work with the Mobile gaming pilot.  
+- [IoT Beacon discovery and provisioning](/doc/example-game.md) example discovers new IoT devices used for expanding the game world and automatically adds them to the resource database, while the provisioning interface updates the IoT device with required configurations to work with the Mobile gaming pilot.  
 
 - [SMAUG Locker](/doc/import_component.md) example uses discovery interface to advertise specific Unique ID to discover locker nearby.
 
@@ -36,7 +36,7 @@ Examples of how P&D component can be utilised include:
 
 ![High Level Architecture](/imgs/archi.png)
 
-Figure 1: High Level Architecture of the Component
+Figure 1: High-Level Architecture of the Component
 
 The first functionality of the component is to provision the devices using meta-data provided by the SOFIE [Semantic Representation](https://github.com/SOFIE-project/Semantic-Representation). The process of provisioning involves enrolling a device into the system and getting each device configured to provide a required service and send data to the right place on the network. In the component, the Provisioning interface goes through the meta-data and checks against the requirements before provisioning the device to the database. This also acts as the filter for either accepting or rejecting the newly discovered IoT resource. After enrolling the device, the provisioning interface provides the configuration for the device to bring it to a working state with the deployed IoT platform.
 
@@ -45,9 +45,9 @@ The second functionality of the component is the discovery of the new IoT resour
 ![Internals](/imgs/usage.png)
 Figure 2: Usage of the Component
 
-As shown in Figure 2, the user [configures](#configration) the semantic file for the IoT device (Raspberry Pi for prototype) and host it on the server. The user starts the SOFIE Provisioning and Discovery component on the device. After starting the component, the user installs the mobile client [application](/android_app/README.md). User is shown multiple options that relates to the discovery protocols. The mobile client scans for the nearby IoT devices based on the protocol selected. In order to filter the newly discovered IoT devices, a custom advertisement packages with URI link to the semantic representation file. After discovering, the mobile client downloads the semantics file that contains the meta-data for the IoT device and goes through the file. The metadata from the file is checked against the requirements provided by the user before provisioning the device to the database. If the device pass the minimum requirement, the connection between the mobile and the IoT device is established and the device is configurated to work with the IoT platform.
+As shown in Figure 2, the user [configures](#configration) the semantic file for the IoT device (Raspberry Pi for prototype) and host it on the server. The user starts the SOFIE Provisioning and Discovery component on the device. After starting the component, the user installs the mobile client [application](/android_app/README.md). User is shown multiple options that relate to the discovery protocols. The mobile client scans for the nearby IoT devices based on the protocol selected. In order to filter the newly discovered IoT devices, a custom advertisement packages with URI link to the semantic representation file. After discovering, the mobile client downloads the semantics file that contains the meta-data for the IoT device and goes through the file. The metadata from the file is checked against the requirements provided by the user before provisioning the device to the database. If the device passes the minimum requirement, the connection between the mobile and the IoT device is established and the device is configurated to work with the IoT platform.
 
-The design of the architecture was driven by the discvoery scenario of the SOFIE Mobile Gaming Pilot.
+The design of the architecture was driven by the discovery scenario of the SOFIE Mobile Gaming Pilot.
 
 ![Internals](/imgs/discovery_internal.png)
 
@@ -58,13 +58,13 @@ As shown in Figure 3, the component uses modified Bluetooth with a custom Gatt s
 
 ### Relation with SOFIE
 
-The discovery and provisiong component works with semantic representation file, it may be used by other SOFIE components and applications as necessary.
+The discovery and provisioning component works with the semantic representation file, it may be used by other SOFIE components and applications as necessary.
 
-Only Mobile gaming pilot utilise the P&D component for discovering and managing the new IoT devices to be used inside the game world. 
+Only Mobile gaming pilot utilises the P&D component for discovering and managing the new IoT devices to be used inside the game world. 
 
 ### Key Technologies
 
-The software modules are implemented in **Python 3** Currently the component supports the Eddystone and custom GATT application over **Bluetooth Low Energy** (BLE) and **DNS-Service Discovery**. The details of the technologies used are as following:
+The software modules are implemented in **Python 3** Currently, the component supports the Eddystone and custom GATT application over **Bluetooth Low Energy** (BLE) and **DNS-Service Discovery**. The details of the technologies used are as following:
 
 **Bluetooth Low Energy (BLE) with Custom Advertisement and Services**
 
@@ -79,13 +79,13 @@ There are two roles within the ATT:
 This is the device that exposes the data it controls or contains. In this Scenario, Raspberry PI is the Server device that accepts incoming commands from a peer device and sends responses, notifications, and indications.
 
 *Client*
-This is the device that interfaces with the server with the purpose of reading the exposed data and/or controlling the server’s behavior. In this example, a mobile device that connects to the Raspberry PI sends commands and requests to it and accepts incoming notifications and indications.
+This is the device that interfaces with the server to read the exposed data and/or controlling the server’s behaviour. In this example, a mobile device that connects to the Raspberry PI sends commands and requests to it and accepts incoming notifications and indications.
 
-When a BLE device is advertising it will periodically transmit packets containing information such as device name, Bluetooth address of the sender, etc. The advertising data fields can be used to configure a custom advertising packet. The advertising packet in this example already contains the custom name, service UUIDs and custom data i.e. URL. It also contains flags defining some of the advertising options. It is important to know that an advertising packet can contain of no more than 31 bytes.
+When a BLE device is advertising it will periodically transmit packets containing information such as device name, Bluetooth address of the sender, etc. The advertising data fields can be used to configure a custom advertising packet. The advertising packet in this example already contains the custom name, service UUIDs and custom data i.e. URL. It also contains flags defining some of the advertising options. It is important to know that an advertising packet can contain no more than 31 bytes.
 
 **Eddystone URL**
 
-Eddystone is an open beacon format developed by Google and designed with transparency and robustness in mind. Eddystone can be detected by both Android and iOS devices. Several different types of the payloads can be included in the frame format. The Eddystone-URL frame broadcasts a URL using a compressed encoding format in order to fit more within the limited advertisement packet.
+Eddystone is an open beacon format developed by Google and designed with transparency and robustness in mind. Eddystone can be detected by both Android and iOS devices. Several different types of payloads can be included in the frame format. The Eddystone-URL frame broadcasts a URL using a compressed encoding format to fit more within the limited advertisement packet.
 
 Once decoded, the URL can be used by any client with access to the internet. In this example, an Eddystone-URL is used to broadcast the URL of the Semantic Representation file, then any client that received this packet can download the Semantics file of the device.
 
@@ -99,7 +99,7 @@ DNS service discovery (DNS-SD) allows clients to discover a named list of servic
 
 [Src](/src) directory contains the code implementing the python application.
 
-[Service file](/_webthing.servie)is a template file for DNS-SD custom service.
+[Service file](/_webthing.service)is a template file for DNS-SD custom service.
 
 [Semantics File](/src/sofie_pd_component/dns/controller/static/semantic.json) is a template file for semantic representation that contains the metadata of the IoT device.
 
@@ -135,7 +135,7 @@ cp [Link to File] /etc/avahi/service/
 ```
 
 **For DNS**
-Create a [semantic representaion file](/src/sofie_pd_component/dns/controller/static/semantic.json) and copy it to internal directory.
+Create a [semantic representation file](/src/sofie_pd_component/dns/controller/static/semantic.json) and copy it to an internal directory.
 
 ```
 cp [Link to File] src/python_app/controller/static
@@ -146,12 +146,12 @@ Upload the semantic file to a server and change the URL in the cli [file](/src/c
 
 ### Execution
 
-Start the Command Line Interface and use following commands
+Start the Command Line Interface and use the following commands
 ```
 cd src
 python3 cli.py
 ```
-After starting the interface, the following options are availiable to perform
+After starting the interface, the following options are available to perform
 
 **'dns'**: Start the DNS-SD
 
@@ -177,13 +177,13 @@ For more details [Link](/doc/import_component.md)
 
 ### Android Application
 
-Android application is used for the provisoning part of the component
+Android application is used for the provisioning part of the component
 
 Please check [Android Application](/android_app/README.md)
 
 ## Testing
 
-The `tests/` directory contains the script to test the software modules of the component. The test check that all the discovery protocols works.
+The `tests/` directory contains the script to test the software modules of the component. The test check that all the discovery protocols work.
 
 ### Running the Tests
 
