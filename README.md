@@ -23,7 +23,7 @@
 
 ## Description
 
-The goal of SOFIE provisioning and discovery component is 1) to provision the IoT device to a working state with the IoT platform and 2) to enable the discovery of new IoT resources along with their related metadata. Using this functionality, it is possible to decentralise the process of making new resources available to systems utilising the SOFIE framework. This component works along with SOFIE [Semantic Representation](https://github.com/SOFIE-project/Semantic-Representation) component to provide meta-data for the IoT devices. 
+This is the Provisioning and Discovery component of the [SOFIE Framework](https://www.sofie-iot.eu/). The goal of the component is 1) to provision the IoT device to a working state with the IoT platform and 2) to enable the discovery of new IoT resources along with their related metadata. Using this functionality, it is possible to decentralise the process of making new resources available to systems utilising the SOFIE framework. This component works along with SOFIE [Semantic Representation](https://github.com/SOFIE-project/Semantic-Representation) component to provide meta-data for the IoT devices. 
 
 Examples of how P&D component can be utilised include:
 
